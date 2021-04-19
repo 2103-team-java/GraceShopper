@@ -76,5 +76,3 @@ Database Setup
 
 Now, you should be deployed!
 
-
-//Kevin Kim Changes
