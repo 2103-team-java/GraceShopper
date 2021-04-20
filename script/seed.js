@@ -15,11 +15,18 @@ async function seed() {
     User.create({ username: 'cody', password: '123', shippingAddress: '123 Example Lane, Great Neck, NY', billingAdress: '123 Example Lane, Great Neck, NY'}),
     User.create({ username: 'murphy', password: '123', shippingAddress: '123 Example Lane, Great Neck, NY', billingAdress: '123 Example Lane, Great Neck, NY' }),
   ])
+  // const user = User.create({ username: 'cody', password: '123', shippingAddress: '123 Example Lane, Great Neck, NY', billingAdress: '123 Example Lane, Great Neck, NY'})
+
+  console.log("magic methods", users[0].__proto__)
 
   const watch = await Promise.all([
     Item.create({ name: 'Seamaster', brand: 'Omega', price: 5000, decription: 'this watch is $$$'}),
 
   ])
+
+  await users[0].addItem(watch[0])
+  await users[0].addItem(watch[0])
+  await watch[0].addItem(users[0])
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
@@ -30,6 +37,7 @@ async function seed() {
     }
   }
 }
+
 
 /*
  We've separated the `seed` function from the `runSeed` function.
