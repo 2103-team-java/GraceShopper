@@ -26,7 +26,8 @@ async function seed() {
 
   await users[0].addItem(watch[0])
   await users[0].addItem(watch[0])
-  await watch[0].addItem(users[0])
+  await users[0].addItem(watch[0])
+  await watch[0].addUser(users[0])
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)

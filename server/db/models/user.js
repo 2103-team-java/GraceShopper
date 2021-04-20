@@ -20,11 +20,11 @@ const User = db.define('user', {
   },
   shippingAddress: {
     type: Sequelize.TEXT,
-    allownull: false,
+    allownull: true,
   },
   billingAddress: {
     type: Sequelize.TEXT,
-    allownull: false,
+    allownull: true,
   }
 })
 

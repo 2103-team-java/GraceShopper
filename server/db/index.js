@@ -8,21 +8,33 @@ const Cart = require('./models/cart')
 
 const Item = require('./models/item')
 
+const Order = require('./models/order')
+
 //Relationships
 // User.hasOne(Cart)
 // Cart.belongsTo(User);
 // Cart.hasMany(Item);
 // Item.belongsToMany(Cart, {through: 'order' });
 
-User.hasMany(Item)
-Item.belongsToMany(User, {through: 'cart'})
 
+User.belongsToMany(Item, {
+  through: Order
+})
+Item.belongsToMany(User, {
+  through: Order
+})
 
 module.exports = {
   db,
   models: {
     User,
     Cart,
-    Item
+    Item,
+    Order
   },
 }
+
+//super many to many table
+
+// if relationship DNE { create ...}
+// if relationship exists { udpate w/ quantity ++ }
