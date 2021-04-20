@@ -76,4 +76,3 @@ Database Setup
 
 Now, you should be deployed!
 
-Jonathan says hello!
