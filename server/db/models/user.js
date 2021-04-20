@@ -1,3 +1,5 @@
+//this file should include username, password and shipping address, billing address
+
 const Sequelize = require('sequelize')
 const db = require('../db')
 const jwt = require('jsonwebtoken')
@@ -14,9 +16,15 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false
   },
-  githubId: {
-    type: Sequelize.INTEGER
+  shippingAddress: {
+    type: Sequelize.TEXT,
+    allownull: false,
+  },
+  billingAddress: {
+    type: Sequelize.TEXT,
+    allownull: false,
   }
 })
 
