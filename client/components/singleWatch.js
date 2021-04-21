@@ -17,37 +17,20 @@ export class SingleItem extends React.Component {
 
     return (
       <div>
-
-        <img src={singleItem.ImageURL} alt={singleRobot.name} className="image" />
+        <img
+          src={singleItem.ImageURL}
+          alt={singleItem.name}
+          className="image"
+        />
 
         <h3>Name: {singleItem.name}</h3>
         <h3>Brand: {singleItem.brand}</h3>
         <h3>Price: {singleItem.price}</h3>
         <h3>Description: {singleItem.description}</h3>
 
-
-        <Link to={`/robots/${singleRobot.id}/update`}>
-          <button type="submit" className="editButton">edit</button>
-        </Link>
-
-        <h3>Projects assigned to {singleRobot.name}</h3>
-
-
-        {projects.length > 0 ? (
-          <div className="listOfRoPj">
-            {projects.map((project) => (
-              <div key={project.id}>
-                <Link to={`/projects/${project.id}`} className="singleLink">{project.title}</Link>
-                <div>Complete: {project.completed.toString()}</div>
-                <div>Deadline: {project.deadline}</div>
-                <div>Priortiy: {project.priority}</div>
-              </div>
-            ))}
-          </div> )
-          : (
-          <div className="listOfRoPjNone">There are no projects at this time.</div>
-            )
-        }
+        <button type="submit" onClick={() => updateCart()}>
+          Add to cart
+        </button>
 
       </div>
     );
