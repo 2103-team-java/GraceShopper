@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import '/home.css'
 
 /**
  * COMPONENT
@@ -11,9 +10,7 @@ export const Home = props => {
   return (
     <div>
       <h3>Welcome, {username}</h3>
-      {/* sideshow */}
-      {/* show all watches */}
-      {/*  */}
+      <watches />
     </div>
   )
 }
