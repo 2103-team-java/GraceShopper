@@ -1,36 +1,37 @@
 import axios from "axios";
 
-let GOT_ONE_ITEM = "GOT_ONE_ITEM";
-
-export const gotOneItem = (item) => {
-  return {
-    type: GOT_ONE_ITEM,
-    item,
-  };
-};
+//ACTION TYPE
+const GET_WATCHES = "GET_WATCHES";
 
 
-export const getOneItem = (id) => {
+//action CREATOR
+export const getWatches = (items) => ({
+  type: GET_WATCHES,
+  items,
+});
+
+
+//THUNK
+export const fetchWatches = () => {
   return async (dispatch) => {
-    const response = await axios.get(`/api/items/${id}`);
-    const itemData = response.data;
-    const action = gotOneItem(itemData);
-    dispatch(action);
+    try {
+      const res = await axios.get("/api/items");
+      dispatch(getWatches(res.data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
 
-const initialState = {
-  item: {},
-};
+//REDUCER
+const initialState = [];
 
-export default function oneItemReducer(state = initialState, action) {
+
+export default function watchesReducer(state = initialState, action) {
   switch (action.type) {
-    case GOT_ONE_ITEM:
-      return {
-        ...state,
-        item: action.item,
-      };
+    case GET_WATCHES:
+      return action.items;
     default:
       return state;
   }

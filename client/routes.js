@@ -6,6 +6,7 @@ import Home from './components/home';
 import { me } from './store';
 import CheckoutPage from './components/CheckoutPage';
 import SingleItem from './components/SingleItem'
+import AllWatches from './components/watches'
 
 /**
  * COMPONENT
@@ -24,6 +25,7 @@ class Routes extends Component {
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/checkout" component={CheckoutPage} />
+                <Route exact path="/watches" component={AllWatches} />
                 <Route exact path="/watches/:id" component={SingleItem} />
             </div>
         );

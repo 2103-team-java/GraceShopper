@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getOneItem } from "../store/watches";
+import { getOneItem } from "../store/singleWatches";
 import { Link } from "react-router-dom";
 
 export class SingleItem extends React.Component {
@@ -16,6 +16,7 @@ export class SingleItem extends React.Component {
   render() {
     const { singleItem } = this.props;
 
+    console.log("props", this.props)
 
     return (
       <div>
