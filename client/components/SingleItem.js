@@ -27,7 +27,7 @@ export class SingleItem extends React.Component {
 
         <h3>Name: {singleItem.name}</h3>
         <h3>Brand: {singleItem.brand}</h3>
-        <h3>Price: {singleItem.price}</h3>
+        <h3>Price: $ {singleItem.price}</h3>
         <h3>Description: {singleItem.description}</h3>
 
         <button type="submit" onClick={() => updateCart()}>
