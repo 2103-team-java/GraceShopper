@@ -9,11 +9,13 @@ export class SingleItem extends React.Component {
     this.props.oneItem(id);
   }
 
+  updateCart() {
+    this.props.singleItem.orders.quantity++
+  }
+
   render() {
     const { singleItem } = this.props;
 
-    // const orders = singleItem.orders || [];
-    //association for orders
 
     return (
       <div>
