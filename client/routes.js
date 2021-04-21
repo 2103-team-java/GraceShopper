@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
-import CheckoutPage from './components/CheckoutPage';
+import CheckoutPage from './components/checkout/CheckoutPage';
+import Review from './components/checkout/review';
 import Home from './components/home';
 import { me } from './store';
 
@@ -23,6 +24,7 @@ class Routes extends Component {
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/checkout" component={CheckoutPage} />
+                <Route path="/review" component={Review} />
             </div>
         );
     }
