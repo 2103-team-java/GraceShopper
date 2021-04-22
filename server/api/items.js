@@ -1,14 +1,27 @@
-const router = require('express').Router()
-const Item = require('../db/models/item');
+const router = require("express").Router();
+const Item = require("../db/models/item");
+const Order = require("../db/models/order");
+
 
 router.get('/', async (req, res, next) => {
-    console.log('hello');
     try {
       const allWatches = await Item.findAll();
-      res.send(allWatches);
+      res.json(allWatches);
     } catch (error) {
       next(error);
     }
   })
 
-  module.exports = router
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const singleItem = await Item.findByPk(req.params.id)
+    res.json(singleItem)
+  } catch (err) {
+    next(err)
+  }
+})
+
+module.exports = router;
+
+

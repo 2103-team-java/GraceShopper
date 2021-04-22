@@ -1,9 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchWatches } from "../store/watches";
-import { Link } from 'react-router-dom';
-// import "./watches.css"
-// import {Slide} from './slide'
+import { Link } from "react-router-dom";
 
 export class AllWatches extends React.Component {
   componentDidMount() {
@@ -14,21 +12,65 @@ export class AllWatches extends React.Component {
     const watches = this.props.watches;
     return (
       <div>
-        <div>
-          <h2 className="title"> All Watches:</h2>
-        </div>
-          {/* <h2> Slideshow</h2>
-          <h2> Contact Info</h2> */}
-          {watches.map((watch) => (
-            <div key={watch.id}>
-              <div>
-                Name:<Link to={`/watches/${watch.id}`}>{watch.name}</Link>
-              <img src={watch.ImageURL} />
+        <section className="nav">
+              <h3 className="cart" >Cart(1)</h3>
+              <button className="login">Login</button>
+              <button className="checkout">Checkout</button>
+          </section>
+
+        <section>
+          <h1 className="header" data-aos="zoom-out">
+            Java Luxury Timepieces
+          </h1>
+        </section>
+
+        <section className="slider">
+          <div
+            id="carousel-example"
+            class="carousel slide"
+            data-ride="carousel"
+            data-interval="3000">
+
+            <div class="carousel-inner">
+              <div class="item active">
+                  <img src="https://www.morettis.com/wp-content/uploads/2019/10/m126234-0015-october-rolex-banner.jpg" />
               </div>
-              {/* <button onClick={() => this.props.deleteRobot(robot.id)}>X</button> */}
+              <div class="item">
+                  <img src="https://www.patseas.gr/wp-content/uploads/2015/01/patek-philippe-banner-watch.jpg" />
+              </div>
+              <div class="item">
+                  <img src="https://argyll-arcade.com/site/wp-content/uploads/2016/10/cm-audemars-piguet-royal-oak-chronograph-watch.jpg" />
+              </div>
             </div>
-            
-          ))}
+
+            <a
+              class="left carousel-control"
+              href="#carousel-example"
+              data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a
+              class="right carousel-control"
+              href="#carousel-example"
+              data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </section>
+
+        {watches.map((watch) => (
+          <section className="watchInfo" key={watch.id}>
+            <p className="brand">{watch.brand}</p>
+            <p className="brand">{watch.name}</p>
+            <br />
+            <Link to={`/${watch.id}`}> <img src ={watch.ImageURL} /></Link>
+            <p className="brand">${watch.price}</p>
+            {/* <img src={watch.ImageURL} /> */}
+          </section>
+          // <section>
+          //     // <h2> Contact Info</h2>
+          // </section>
+        ))}
       </div>
     );
   }

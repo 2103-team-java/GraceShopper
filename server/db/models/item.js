@@ -14,7 +14,7 @@ const Item = db.define('item', {
         type: Sequelize.INTEGER,
         allownull: false,
     },
-    decription: {
+    description: {
         type: Sequelize.TEXT,
         allownull: false,
     },

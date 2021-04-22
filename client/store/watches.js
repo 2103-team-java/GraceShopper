@@ -1,13 +1,15 @@
 import axios from "axios";
 
-//ACTION OBJECT
-export const GET_WATCHES = "GET_WATCHES";
+//ACTION TYPE
+const GET_WATCHES = "GET_WATCHES";
+
 
 //action CREATOR
 export const getWatches = (items) => ({
   type: GET_WATCHES,
   items,
 });
+
 
 //THUNK
 export const fetchWatches = () => {
@@ -21,8 +23,10 @@ export const fetchWatches = () => {
   };
 };
 
+
 //REDUCER
 const initialState = [];
+
 
 export default function watchesReducer(state = initialState, action) {
   switch (action.type) {

@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import Cart from './components/Cart'
-import Home from './components/Home';
 import {me} from './store'
-import CheckoutPage from './components/CheckoutPage';
+import CheckoutPage from './components/checkout/CheckoutPage';
+import SingleItem from './components/SingleItem'
 import AllWatches from './components/watches'
 
 /**
@@ -17,49 +17,19 @@ class Routes extends Component {
     }
 
     render() {
-        const { isLoggedIn } = this.props;
+        return (
+            <div>
+                <Route exact path="/" exact component={AllWatches} />
 
-    // return (
-    //   <div>
-    //     {isLoggedIn ? (
-    //       <Switch>
-    //         <Route path="/test" component={Cart}/>
-    //         <Route path="/home" component={Home} />
-    //         <Route path="/checkout" component={CheckoutPage} />
-    //         <Route path="/watches" component={AllWatches} />
-    //         <Redirect to="/home" />
-
-    //         {/* <Route path="/test" component={Cart}/> */}
-    //       </Switch>
-    //     ) : (
-    //       <Switch>
-    //         <Route path="/watches" component={AllWatches} />
-    //         <Route path='/' exact component={ Login } />
-    //         <Route path="/login" component={Login} />
-    //         <Route path="/signup" component={Signup} />
-    //       </Switch>
-    //     )}
-    //   </div>
-    // )
-
-    return (
-      <div>
-          <Switch>
-            <Route path="/test" component={Cart}/>
-            <Route path="/home" component={Home} />
-            <Route path="/checkout" component={CheckoutPage} />
-            <Route path="/watches" component={AllWatches} />
-            {/* <Redirect to="/home" /> */}
-            <Route path="/watches" component={AllWatches} />
-            <Route path='/' exact component={ Login } />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            {/* <Route path="/test" component={Cart}/> */}
-          </Switch>
-      </div>
-    )
-
-  }
+                <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
+                <Route exact path="/cart" component={Cart} />
+                {/* <Route exact path="/:id" component={SingleItem} /> */}
+                <Route exact path="watches/:id" component={SingleItem} />
+                <Route path="/cart/checkout" component={CheckoutPage} />
+            </div>
+        );
+    }
 }
 
 /**

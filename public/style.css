@@ -1,15 +1,48 @@
 * {
   background-color: white;
-  font-family: 'Petit Formal Script', cursive;
+  font-family: 'Cinzel Decorative', cursive;
   font-size: 30px;
+  background-color:rgba(R, G, B, A);
+  /* background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(102,99,99,1) 100%, rgba(0,212,255,1) 100%); */
+  color: black;
 }
 
-body {
+/* body {
   background-color: white;
+} */
+
+/* section.slider, img {
+  min-width: 100%;
+  min-height: 100%;
+  display:flex;
+  justify-content:center;
+  padding: 10px;
+} */
+
+navbar {
+  display: flex;
+  justify-content: left;
 }
 
-a {
+section.slider, img {
+margin-top: 20px;
+margin-bottom: 20px;
+display: block;
+height: 100%;
+width: 100%;
+line-height: 5;
+/* width: 100%; */
+object-fit: contain;
+}
+
+
+p.brand, a, img {
   text-decoration: none;
+  font-size: 20px;
+  display: flex;
+  justify-content:center;
+  background:transparent !important;
+  color: black;
 }
 
 label {
@@ -24,4 +57,55 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.header {
+  line-height: 7;
+}
+
+
+h1.header {
+  background-image: url('https://anscommerce.s3.ap-south-1.amazonaws.com/live/image/catalog/brandstore/johnson/Information/service-center-5.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  color: #0ABAB5;
+  font-weight:bolder;
+  text-shadow: 1px 1px 2px black;
+  font-size: 50px;
+  height: 400px;
+  margin: 10px;
+  z-index: 1;
+  background-color: transparent !important;
+}
+
+img {
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: cover;
+  background-color: transparent !important;
+}
+
+img:hover {
+  transform: scale(1.1);
+  transition: transform .2s ease;
+  background-color: transparent !important;
+}
+
+p {
+  margin: 0;
+  background-color: transparent !important;
+}
+
+section.watchInfo {
+  display: inline-block;
+  justify-content: space-around;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 30px;
+  border: 2px double #0ABAB5;
+  background: transparent !important;
 }
