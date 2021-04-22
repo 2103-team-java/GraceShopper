@@ -5,16 +5,17 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import auth from './auth'
 import cartReducer from './cart'
 import watchesReducer from './watches'
+import oneItemReducer from "./singleWatches";
 
 // import cart from './cart'
 
-const reducer = combineReducers({ auth: auth, cart: cartReducer, watchesReducer })
+const reducer = combineReducers({ auth: auth, cart: cartReducer, watchesReducer, oneItemReducer })
 
 
 const middleware = composeWithDevTools(
-  applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
-)
-const store = createStore(reducer, middleware)
+  applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
+);
+const store = createStore(reducer, middleware);
 
-export default store
-export * from './auth'
+export default store;
+export * from "./auth";

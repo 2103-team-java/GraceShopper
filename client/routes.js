@@ -2,10 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
+import Cart from './components/Cart'
+import Home from './components/Home';
+import {me} from './store'
 import CheckoutPage from './components/checkout/CheckoutPage';
-import { me } from './store';
-import AllWatches from './components/watches';
-import Cart from './components/Cart';
+import SingleItem from './components/SingleItem'
+import AllWatches from './components/watches'
 
 /**
  * COMPONENT
@@ -19,6 +21,7 @@ class Routes extends Component {
         return (
             <div>
                 <Route exact path="/" exact component={AllWatches} />
+                <Route exact path="/:id" component={SingleItem} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route exact path="/cart" component={Cart} />
