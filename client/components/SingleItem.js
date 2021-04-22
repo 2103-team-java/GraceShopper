@@ -1,8 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getOneItem } from "../store/singleWatches";
-import { createOrder, getUserWatches } from "../store/cart"
-
+import {
+  createOrder,
+  getUserWatches,
+  updateUserWatchCount,
+  getWatches,
+} from "../store/cart";
 
 export class SingleItem extends React.Component {
   componentDidMount() {
@@ -10,14 +14,12 @@ export class SingleItem extends React.Component {
     this.props.oneItem(id);
   }
 
-  updateCart() {
-    this.props.singleItem.orders.quantity++
-  }
+  updateCart(id) {}
 
   render() {
     const { singleItem } = this.props;
 
-    console.log("props", this.props)
+    console.log("props", this.props);
 
     return (
       <div>
@@ -32,10 +34,9 @@ export class SingleItem extends React.Component {
         <h3>Price: $ {singleItem.price}</h3>
         <h3>Description: {singleItem.description}</h3>
 
-        <button type="submit" onClick={() => updateCart()}>
+        <button type="submit" onClick={() => updateCart(singleItem.id)}>
           Add to cart
         </button>
-
       </div>
     );
   }
@@ -44,6 +45,8 @@ export class SingleItem extends React.Component {
 const mapState = (state) => {
   return {
     singleItem: state.oneItemReducer.item,
+    globalusername: state.auth.username,
+    orders: state.cart,
   };
 };
 
@@ -53,6 +56,7 @@ const mapDispatch = (dispatch) => {
     createOrder: (obj) => dispatch(createOrder(obj)),
     updateUserWatchQty: (obj) => dispatch(updateUserWatchCount(obj)),
     getUserWatchesFromServer: () => dispatch(getUserWatches()),
+    getWatchesFromServer: () => dispatch(getWatches()),
   };
 };
 

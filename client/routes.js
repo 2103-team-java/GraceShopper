@@ -30,8 +30,6 @@ class Routes extends Component {
             <Route exact path="/watches/:id" component={SingleItem} />
             <Route path="/watches" component={AllWatches} />
             <Redirect to="/home" />
-
-            {/* <Route path="/test" component={Cart}/> */}
           </Switch>
         ) : (
           <Switch>
