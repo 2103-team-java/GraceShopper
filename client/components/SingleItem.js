@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getOneItem } from "../store/singleWatches";
-import { Link } from "react-router-dom";
+import { createOrder, getUserWatches } from "../store/cart"
+
 
 export class SingleItem extends React.Component {
   componentDidMount() {
@@ -49,6 +50,9 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     oneItem: (id) => dispatch(getOneItem(id)),
+    createOrder: (obj) => dispatch(createOrder(obj)),
+    updateUserWatchQty: (obj) => dispatch(updateUserWatchCount(obj)),
+    getUserWatchesFromServer: () => dispatch(getUserWatches()),
   };
 };
 
