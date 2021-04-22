@@ -13,9 +13,19 @@ export const updateStatus = () => ({
 });
 
 export const setAddressThunk = (id, address) => {
-    return async (dispatch) => {
+    return async () => {
         try {
             const res = await axios.put(`/api/users/checkout/${id}`, address);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+export const setInactive = (orderId) => {
+    return async () => {
+        try {
+            await axios.put(`/api/orders/checkout/${orderId}`);
         } catch (error) {
             console.log(error);
         }

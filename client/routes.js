@@ -6,6 +6,7 @@ import CheckoutPage from './components/checkout/CheckoutPage';
 import Review from './components/checkout/review';
 import { me } from './store';
 import AllWatches from './components/watches';
+import Cart from './components/Cart';
 
 /**
  * COMPONENT

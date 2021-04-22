@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
-import { Link, List } from '@material-ui/core';
-import { setAddress, setAddressThunk } from '../../store/checkout';
+import { List, Paper } from '@material-ui/core';
+import { setAddressThunk, setInactive } from '../../store/checkout';
 import { connect } from 'react-redux';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 const dummyData = {
     id: 1,
@@ -59,37 +58,46 @@ const dummyData = {
     ],
 };
 
-class Checkout extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            userId: dummyData.id,
-        };
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-    }
-    handleSubmit() {
-        const shippingAddress = `${this.state.address1}, ${this.state.country},${this.state.city},${this.state.state},${this.state.zip}`;
-        this.props.saveAddress(this.state.userId, {
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(5),
+        marginBottom: theme.spacing(3),
+        padding: theme.spacing(5),
+    },
+}));
+
+function Checkout(props) {
+    const classes = useStyles();
+    const userId = dummyData.id;
+    const [address, addAddress] = useState({});
+    console.log(props);
+    const handleSubmit = () => {
+        const shippingAddress = `${address.address1}, ${address.country},${address.city},${address.state},${address.zip}`;
+        props.saveAddress(userId, {
             shippingAddress: shippingAddress,
         });
-    }
+        props.closeOrder(1);
+    };
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value,
-        });
-        console.log('handling change');
-    }
+    const handleChange = (event) => {
+        addAddress({ ...address, [event.target.name]: event.target.value });
+        console.log(address);
+    };
 
-    render() {
-        const items = dummyData.items;
-        let total = 0;
-        dummyData.items.forEach((item) => (total += item.price));
-        return (
-            <React.Fragment>
-                <form onSubmit={() => this.handleSubmit}>
-                    <React.Fragment>
+    const items = dummyData.items;
+    let total = 0;
+    dummyData.items.forEach(
+        (item) => (total += item.price * item.order.quantity)
+    );
+    let formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+    return (
+        <React.Fragment>
+            <form onSubmit={() => this.handleSubmit}>
+                <React.Fragment>
+                    <Paper className={classes.paper}>
                         <Typography variant="h1" align="center">
                             Checkout page
                         </Typography>
@@ -105,7 +113,7 @@ class Checkout extends Component {
                                     label="First name"
                                     fullWidth
                                     autoComplete="given-name"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -116,7 +124,7 @@ class Checkout extends Component {
                                     label="Last name"
                                     fullWidth
                                     autoComplete="family-name"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -127,7 +135,7 @@ class Checkout extends Component {
                                     label="Address line 1"
                                     fullWidth
                                     autoComplete="shipping address-line1"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -138,7 +146,7 @@ class Checkout extends Component {
                                     label="City"
                                     fullWidth
                                     autoComplete="shipping address-level2"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -146,7 +154,7 @@ class Checkout extends Component {
                                     id="state"
                                     name="state"
                                     label="State/Province/Region"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -158,7 +166,7 @@ class Checkout extends Component {
                                     label="Zip / Postal code"
                                     fullWidth
                                     autoComplete="shipping postal-code"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -169,13 +177,15 @@ class Checkout extends Component {
                                     label="Country"
                                     fullWidth
                                     autoComplete="shipping country"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12}></Grid>
                         </Grid>
-                    </React.Fragment>
-                    <React.Fragment>
+                    </Paper>
+                </React.Fragment>
+                <React.Fragment>
+                    <Paper className={classes.paper}>
                         <Typography variant="h6" gutterBottom>
                             Payment details
                         </Typography>
@@ -188,7 +198,7 @@ class Checkout extends Component {
                                     label="First name"
                                     fullWidth
                                     autoComplete="given-name"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -199,7 +209,7 @@ class Checkout extends Component {
                                     label="Last name"
                                     fullWidth
                                     autoComplete="family-name"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                 />
                             </Grid>
                             <Grid item xs={6}>
@@ -208,7 +218,7 @@ class Checkout extends Component {
                                     id="cardNumber"
                                     name="cardNumber"
                                     label="Card number"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -218,7 +228,7 @@ class Checkout extends Component {
                                     id="cardNumber"
                                     name="cardNumber"
                                     label="Name on card"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -228,7 +238,7 @@ class Checkout extends Component {
                                     id="expiryDate"
                                     name="expiryDate"
                                     label="Expriry date"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -238,13 +248,15 @@ class Checkout extends Component {
                                     id="cvv"
                                     name="cvv"
                                     label="CVV"
-                                    onChange={this.handleChange}
+                                    onChange={handleChange}
                                     fullWidth
                                 />
                             </Grid>
                         </Grid>
-                    </React.Fragment>
-                    <React.Fragment>
+                    </Paper>
+                </React.Fragment>
+                <React.Fragment>
+                    <Paper className={classes.paper}>
                         <Typography variant="h6" gutterBottom>
                             Review Order
                         </Typography>
@@ -256,7 +268,8 @@ class Checkout extends Component {
                                         secondary={item.decription}
                                     />
                                     <Typography variant="body2">
-                                        ${item.price}
+                                        {item.order.quantity} x{' '}
+                                        {formatter.format(item.price)}
                                     </Typography>
                                 </ListItem>
                             ))}
@@ -264,29 +277,30 @@ class Checkout extends Component {
                         <ListItem>
                             <ListItemText primary="Total" />
                             <Typography variant="subtitle1">
-                                ${total}
+                                {formatter.format(total)}
                             </Typography>
                         </ListItem>
-                    </React.Fragment>
-                </form>
-                <Grid item xs={12} align="center">
-                    <Button
-                        variant="contained"
-                        color="secondary"
-                        onClick={() => this.handleSubmit()}
-                    >
-                        {' '}
-                        pay for items
-                    </Button>
-                </Grid>
-            </React.Fragment>
-        );
-    }
+                    </Paper>
+                </React.Fragment>
+            </form>
+            <Grid item xs={12} align="center">
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => handleSubmit()}
+                >
+                    {' '}
+                    pay for items
+                </Button>
+            </Grid>
+        </React.Fragment>
+    );
 }
 
 const mapDispatch = (dispatch) => {
     return {
         saveAddress: (id, address) => dispatch(setAddressThunk(id, address)),
+        closeOrder: (orderId) => dispatch(setInactive(orderId)),
     };
 };
 

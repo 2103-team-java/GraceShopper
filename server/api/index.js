@@ -3,6 +3,10 @@ const router = require('express').Router();
 router.use('/users', require('./users'));
 // router.use('/orders', require('./orders'))
 
+// router.use('/users', require('./users'))
+router.use('/orders', require('./orders'));
+// router.use('/items', require('./items'))
+// router.use('/orders', require('./orders'))
 router.use('/items', require('./items'));
 
 router.use((req, res, next) => {
