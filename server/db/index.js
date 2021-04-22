@@ -4,7 +4,7 @@ const db = require('./db')
 
 const User = require('./models/user')
 
-const Cart = require('./models/cart')
+// const Cart = require('./models/cart')
 
 const Item = require('./models/item')
 
@@ -23,12 +23,17 @@ User.belongsToMany(Item, {
 Item.belongsToMany(User, {
   through: Order
 })
+// Item.belongsTo(Order)
+
 
 module.exports = {
   db,
+  // User,
+  // Item,
+  // Order,
   models: {
     User,
-    Cart,
+    // Cart,
     Item,
     Order
   },
