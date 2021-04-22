@@ -4,8 +4,8 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import CheckoutPage from './components/checkout/CheckoutPage';
 import Review from './components/checkout/review';
-import Home from './components/home';
 import { me } from './store';
+import AllWatches from './components/watches';
 
 /**
  * COMPONENT
@@ -25,6 +25,7 @@ class Routes extends Component {
                 <Route path="/signup" component={Signup} />
                 <Route path="/checkout" component={CheckoutPage} />
                 <Route path="/review" component={Review} />
+                <Route path="/watches" component={AllWatches} />
             </div>
         );
     }

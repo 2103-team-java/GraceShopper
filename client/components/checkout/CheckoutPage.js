@@ -8,6 +8,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Link, List } from '@material-ui/core';
+import { setAddress, setAddressThunk } from '../../store/checkout';
+import { connect } from 'react-redux';
 
 const dummyData = {
     id: 1,
@@ -57,19 +59,27 @@ const dummyData = {
     ],
 };
 
-export default class Checkout extends Component {
-    constructor() {
-        super();
+class Checkout extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
             userId: dummyData.id,
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
-    handleSubmit(event) {}
+    handleSubmit() {
+        const shippingAddress = `${this.state.address1}, ${this.state.country},${this.state.city},${this.state.state},${this.state.zip}`;
+        this.props.saveAddress(this.state.userId, {
+            shippingAddress: shippingAddress,
+        });
+    }
 
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value,
         });
+        console.log('handling change');
     }
 
     render() {
@@ -78,7 +88,7 @@ export default class Checkout extends Component {
         dummyData.items.forEach((item) => (total += item.price));
         return (
             <React.Fragment>
-                <form onSubmit={}>
+                <form onSubmit={() => this.handleSubmit}>
                     <React.Fragment>
                         <Typography variant="h1" align="center">
                             Checkout page
@@ -95,7 +105,7 @@ export default class Checkout extends Component {
                                     label="First name"
                                     fullWidth
                                     autoComplete="given-name"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -106,7 +116,7 @@ export default class Checkout extends Component {
                                     label="Last name"
                                     fullWidth
                                     autoComplete="family-name"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -117,17 +127,7 @@ export default class Checkout extends Component {
                                     label="Address line 1"
                                     fullWidth
                                     autoComplete="shipping address-line1"
-                                    onChange={() => this.handleChange}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="address2"
-                                    name="address2"
-                                    label="Address line 2"
-                                    fullWidth
-                                    autoComplete="shipping address-line2"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -138,7 +138,7 @@ export default class Checkout extends Component {
                                     label="City"
                                     fullWidth
                                     autoComplete="shipping address-level2"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -146,7 +146,7 @@ export default class Checkout extends Component {
                                     id="state"
                                     name="state"
                                     label="State/Province/Region"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -158,7 +158,7 @@ export default class Checkout extends Component {
                                     label="Zip / Postal code"
                                     fullWidth
                                     autoComplete="shipping postal-code"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -169,21 +169,10 @@ export default class Checkout extends Component {
                                     label="Country"
                                     fullWidth
                                     autoComplete="shipping country"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            color="secondary"
-                                            name="saveAddress"
-                                            value="yes"
-                                        />
-                                    }
-                                    label="Use this address for payment details"
-                                />
-                            </Grid>
+                            <Grid item xs={12}></Grid>
                         </Grid>
                     </React.Fragment>
                     <React.Fragment>
@@ -199,7 +188,7 @@ export default class Checkout extends Component {
                                     label="First name"
                                     fullWidth
                                     autoComplete="given-name"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -210,7 +199,7 @@ export default class Checkout extends Component {
                                     label="Last name"
                                     fullWidth
                                     autoComplete="family-name"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                 />
                             </Grid>
                             <Grid item xs={6}>
@@ -219,7 +208,7 @@ export default class Checkout extends Component {
                                     id="cardNumber"
                                     name="cardNumber"
                                     label="Card number"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -229,7 +218,7 @@ export default class Checkout extends Component {
                                     id="cardNumber"
                                     name="cardNumber"
                                     label="Name on card"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -239,7 +228,7 @@ export default class Checkout extends Component {
                                     id="expiryDate"
                                     name="expiryDate"
                                     label="Expriry date"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -249,7 +238,7 @@ export default class Checkout extends Component {
                                     id="cvv"
                                     name="cvv"
                                     label="CVV"
-                                    onChange={() => this.handleChange}
+                                    onChange={this.handleChange}
                                     fullWidth
                                 />
                             </Grid>
@@ -294,3 +283,11 @@ export default class Checkout extends Component {
         );
     }
 }
+
+const mapDispatch = (dispatch) => {
+    return {
+        saveAddress: (id, address) => dispatch(setAddressThunk(id, address)),
+    };
+};
+
+export default connect(null, mapDispatch)(Checkout);

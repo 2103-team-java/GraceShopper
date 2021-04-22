@@ -20,8 +20,13 @@ router.get('/', async (req, res, next) => {
 
 //routes to update the shipping address of users
 
-router.put('/checkout', async (req, res, next) => {
-    const userId = req.body.id;
+router.put('/checkout/:id', async (req, res, next) => {
+    const userId = req.params.id;
+    try {
+        const user = await User.findByPk(userId);
+        const update = await user.update(req.body);
+        res.send(update);
+    } catch (error) {
+        console.log(error);
+    }
 });
-
-//put route to add user shipping info .....

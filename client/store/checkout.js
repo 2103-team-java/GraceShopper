@@ -15,7 +15,9 @@ export const updateStatus = () => ({
 export const setAddressThunk = (id, address) => {
     return async (dispatch) => {
         try {
-            const res = await axios.put(`/api/users`);
-        } catch (error) {}
+            const res = await axios.put(`/api/users/checkout/${id}`, address);
+        } catch (error) {
+            console.log(error);
+        }
     };
 };
