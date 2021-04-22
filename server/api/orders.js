@@ -11,13 +11,8 @@ router.get('/', async (req, res, next) => {
       include: [
       {
         model: Item,
-        //attributes: [['brand', 'price', 'price']],
         required: true
       },
-      // {
-      //   model: User,
-      //   attributes: [['username']]
-      // },
     ]}
       )
     res.json(orders)
@@ -27,32 +22,22 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.get('/:singleuser', async (req, res, next) => {
-    try {
-      // console.log('hello')
-      const userFilter = req.params.singleuser
-      const orders = await User.findOne({
-        where: {
-          username: userFilter
-        },
-        include: [
-        {
-          model: Item,
-          //attributes: [['brand', 'price', 'price']],
-          required: true
-        },
-        // {
-        //   model: User,
-        //   attributes: [['username']]
-        // },
-      ]}
-        )
-      res.json(orders)
-    }
-    catch (error) {
-      next(error)
-    }
-  })
+router.put('/', async (req, res, next) => {
+  try {
+    console.log('req.body is....', req.body)
+    const toUpdate = await Order.findOne({
+      where: {
+        userId: req.body.userId,
+        itemId: req.body.itemId,
+      }
+    });
+    console.log(toUpdate)
+    res.send(await toUpdate.update(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 //get route for all orders
 

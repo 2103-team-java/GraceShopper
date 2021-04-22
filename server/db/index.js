@@ -23,6 +23,8 @@ User.belongsToMany(Item, {
 Item.belongsToMany(User, {
   through: Order
 })
+// Item.belongsTo(Order)
+
 
 module.exports = {
   db,

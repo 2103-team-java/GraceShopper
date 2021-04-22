@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import React, { Component } from 'react';
-import { getWatches, getUserWatches } from '../store/cart'
+import { getWatches, getUserWatches, updateUserWatchCount } from '../store/cart'
 import { Link } from 'react-router-dom';
 
 /**
@@ -11,55 +11,67 @@ export class Cart extends Component {
   componentDidMount() {
     console.log('component mounted')
     this.props.getWatchesFromServer()
-    //this.props.getUserWatchesFromServer(this.props.globalusername)
-    //this.props.getUserWatchesFromServer('sam')
   }
 
   render() {
     const {globalusername} = this.props
-    console.log('globalIs ..... ', globalusername)
-    console.log('props are', this.props)
-    let usersOrders = []
+    //console.log('globalIs ..... ', globalusername)
+    //console.log('props are', this.props)
+    // let usersOrders = []
+    let usersOrders = [
+      {items: [
+        {id: 1, name: "PlaceHolder1", brand: "PHBrand1", order: {quantity: 1, userId: 1}}
+      ]}
+    ]
+
     for (let i = 0; i < this.props.orders.allWatches.length; i++) {
       if (this.props.orders.allWatches[i].username === globalusername) {
-        usersOrders.push(this.props.orders.allWatches[i])
+        usersOrders[0] = this.props.orders.allWatches[i]
       }
     }
-    console.log('usersOrders is ....', usersOrders)
-    // const filteredItems = this.props.orders.allWatches.filter((eachUsersWatches) => {
-    //   return eachUsersWatches.username = globalusername
-    // })
-    // console.log('filteredItems are', filteredItems)
+
+    usersOrders[0].items.forEach((eachItem) => {
+      eachItem.userId = usersOrders[0].id
+    })
+
+    //let usersOneOrder = usersOrders[0]
+    //console.log('usersOrders is ....', usersOrders)
     return (
       <div>
         <h3>Your Cart {globalusername}</h3>
+        {/* <div>
+          {usersOneOrder}
+        </div> */}
         <div>
-
-
-        {this.props.allProjects.map((eachProject) => {
-            return (
-              <div key={eachProject.id} className='each-item'>
-                <Link to={`/projects/${eachProject.id}`}>
-                  <div>
-                    <h3>Project: {eachProject.title}</h3>
-                    <h3>Deadline: {eachProject.deadline}</h3>
-                  </div>
-                </Link>
-                <form onSubmit={(event) => event.preventDefault()}>
-                  <button className='delete-button' onClick={() => this.props.deleteProject(eachProject)}>
-                    X
-                  </button>
-                </form>
-              </div>
-            )
-          })}
-
-
+        {usersOrders[0].items.map((eachItem) => {
+          return (
+            <div>
+              <h3>ItemBrand: {eachItem.brand}</h3>
+              <h3>ItemName: {eachItem.name}</h3>
+              <h3>Quantity: {eachItem.order.quantity}</h3>
+              <h3>Item Id: {eachItem.id}</h3>
+              <h3>UserId: {eachItem.order.userId}</h3>
+              <button onClick={() => this.props.updateUserWatchQty({
+                userId: eachItem.order.userId,
+                itemId: eachItem.id,
+                quantity:(eachItem.order.quantity + 1)
+              })}>Add Item</button>
+              <button onClick={() => this.props.updateUserWatchQty({
+                userId: eachItem.order.userId,
+                itemId: eachItem.id,
+                quantity:(eachItem.order.quantity -1)
+              })}>Subtract Item</button>
+              <button >Remove Item</button>
+            </div>
+          )
+        })}
         </div>
       </div>
     )
   }
 }
+
+
 
 /**
  * CONTAINER
@@ -73,7 +85,8 @@ const mapState = state => {
 
 const mapDispatch = (dispatch) => ({
   getWatchesFromServer: () => dispatch(getWatches()),
-  getUserWatchesFromServer: () => dispatch(getUserWatches())
+  getUserWatchesFromServer: () => dispatch(getUserWatches()),
+  updateUserWatchQty: (objectToUpdate) => dispatch(updateUserWatchCount(objectToUpdate))
 });
 
 export default connect(mapState, mapDispatch)(Cart)
