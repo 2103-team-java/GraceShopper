@@ -63,7 +63,7 @@ export class AllWatches extends React.Component {
             <p className="brand">{watch.brand}</p>
             <p className="brand">{watch.name}</p>
             <br />
-            <Link to={`/watches/${watch.id}`}> <img src ={watch.ImageURL} /></Link>
+            <Link to={`/${watch.id}`}> <img src ={watch.ImageURL} /></Link>
             <p className="brand">${watch.price}</p>
             {/* <img src={watch.ImageURL} /> */}
           </section>
