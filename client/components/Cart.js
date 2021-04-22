@@ -8,17 +8,16 @@ import { Link } from 'react-router-dom';
  */
 export class Cart extends Component {
 
+
   componentDidMount() {
     console.log('component mounted')
+    console.log('this.state is ...', this.state)
     this.props.getWatchesFromServer()
+    // this.setState({
+    //   [evt.target.name]: evt.target.value
+    // });
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.orders.updatedUserWatches !== undefined && this.props.orders.updatedUserWatches !== prevProps.orders.updatedUserWatches) {
-      console.log('forcing update...')
-      this.forceUpdate()
-    }
-  }
 
   render() {
     const {globalusername} = this.props
@@ -58,11 +57,27 @@ export class Cart extends Component {
               <h3>Quantity: {eachItem.order.quantity}</h3>
               <h3>Item Id: {eachItem.id}</h3>
               <h3>UserId: {eachItem.order.userId}</h3>
-              <button onClick={() => this.props.updateUserWatchQty({
+              {/* <button onClick={this.handleClick}>Add Item</button> */}
+              {/* <button onClick={() => this.props.updateUserWatchQty({
                 userId: eachItem.order.userId,
                 itemId: eachItem.id,
                 quantity:(eachItem.order.quantity + 1)
-              })}>Add Item</button>
+              })}>Add Item</button> */}
+              <button onClick={() =>
+              {
+              this.props.updateUserWatchQty({
+                userId: eachItem.order.userId,
+                itemId: eachItem.id,
+                quantity:(eachItem.order.quantity + 1)
+              })
+
+              this.props.getWatchesFromServer()
+
+              }
+
+              }>Add Item</button>
+              {/* <button onClick={this.onClickFunc}>Add Item</button> */}
+              {/* can i call multiple functions within my onClick */}
               <button onClick={() => this.props.updateUserWatchQty({
                 userId: eachItem.order.userId,
                 itemId: eachItem.id,
@@ -84,8 +99,6 @@ export class Cart extends Component {
     )
   }
 }
-
-
 
 /**
  * CONTAINER
