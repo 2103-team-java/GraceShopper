@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
-import { me } from './store';
+import Cart from './components/Cart'
+import Home from './components/Home';
+import {me} from './store'
 import CheckoutPage from './components/CheckoutPage';
 import AllWatches from './components/watches'
 
@@ -17,16 +19,28 @@ class Routes extends Component {
     render() {
         const { isLoggedIn } = this.props;
 
-        return (
-            <div>
-                <Route path="/" exact component={Login} />
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/checkout" component={CheckoutPage} />
-                <Route path="/watches" component={AllWatches} />
-            </div>
-        );
-    }
+    return (
+      <div>
+        {isLoggedIn ? (
+          <Switch>
+            <Route path="/test" component={Cart}/>
+            <Route path="/home" component={Home} />
+            <Route path="/checkout" component={CheckoutPage} />
+            <Route path="/watches" component={AllWatches} />
+            <Redirect to="/home" />
+
+            {/* <Route path="/test" component={Cart}/> */}
+          </Switch>
+        ) : (
+          <Switch>
+            <Route path='/' exact component={ Login } />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+          </Switch>
+        )}
+      </div>
+    )
+  }
 }
 
 /**
