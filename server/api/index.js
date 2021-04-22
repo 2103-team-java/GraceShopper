@@ -1,8 +1,7 @@
 const router = require('express').Router()
 
 router.use('/users', require('./users'))
-// router.use('/orders', require('./orders'))
-
+router.use('/orders', require('./orders'))
 router.use('/items', require('./items'))
 
 
