@@ -22,6 +22,16 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.post("/", async (req, res, next) => {
+  try {
+    const addCart = await Order.create(req.body)
+    res.status(201).json(addCart)
+  } catch (err) {
+    next(err)
+  }
+})
+
+
 router.put('/', async (req, res, next) => {
   try {
     console.log('req.body is....', req.body)
