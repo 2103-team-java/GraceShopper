@@ -28,14 +28,14 @@ Item.belongsToMany(User, {
 
 module.exports = {
   db,
-  User,
-  Item,
-  Order,
+  // User,
+  // Item,
+  // Order,
   models: {
     User,
-  //   // Cart,
-  //   Item,
-  //   Order
+    // Cart,
+    Item,
+    Order
   },
 }
 
