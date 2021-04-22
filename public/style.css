@@ -3,7 +3,8 @@
   font-family: 'Cinzel Decorative', cursive;
   font-size: 30px;
   background-color:rgba(R, G, B, A);
-  background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(102,99,99,1) 100%, rgba(0,212,255,1) 100%);
+  /* background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(102,99,99,1) 100%, rgba(0,212,255,1) 100%); */
+  color: black;
 }
 
 /* body {
@@ -41,7 +42,7 @@ p.brand, a, img {
   display: flex;
   justify-content:center;
   background:transparent !important;
-  color: white;
+  color: black;
 }
 
 label {
