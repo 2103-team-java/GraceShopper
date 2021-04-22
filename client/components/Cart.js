@@ -13,10 +13,17 @@ export class Cart extends Component {
     this.props.getWatchesFromServer()
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.orders.updatedUserWatches !== undefined && this.props.orders.updatedUserWatches !== prevProps.orders.updatedUserWatches) {
+      console.log('forcing update...')
+      this.forceUpdate()
+    }
+  }
+
   render() {
     const {globalusername} = this.props
-    //console.log('globalIs ..... ', globalusername)
-    //console.log('props are', this.props)
+    console.log('globalIs ..... ', globalusername)
+    console.log('props are', this.props)
     // let usersOrders = []
     let usersOrders = [
       {items: [
@@ -59,9 +66,16 @@ export class Cart extends Component {
               <button onClick={() => this.props.updateUserWatchQty({
                 userId: eachItem.order.userId,
                 itemId: eachItem.id,
-                quantity:(eachItem.order.quantity -1)
+                quantity:(eachItem.order.quantity - 1)
               })}>Subtract Item</button>
               <button >Remove Item</button>
+
+
+              {/* NEED TO ADD FUNCTIONALITY TO REMOVE ITEM AS WELL
+              NEED TO ADD CHECKOUT BUTTON AND PASS PARAMS */}
+
+
+
             </div>
           )
         })}
