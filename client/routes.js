@@ -19,27 +19,46 @@ class Routes extends Component {
     render() {
         const { isLoggedIn } = this.props;
 
+    // return (
+    //   <div>
+    //     {isLoggedIn ? (
+    //       <Switch>
+    //         <Route path="/test" component={Cart}/>
+    //         <Route path="/home" component={Home} />
+    //         <Route path="/checkout" component={CheckoutPage} />
+    //         <Route path="/watches" component={AllWatches} />
+    //         <Redirect to="/home" />
+
+    //         {/* <Route path="/test" component={Cart}/> */}
+    //       </Switch>
+    //     ) : (
+    //       <Switch>
+    //         <Route path="/watches" component={AllWatches} />
+    //         <Route path='/' exact component={ Login } />
+    //         <Route path="/login" component={Login} />
+    //         <Route path="/signup" component={Signup} />
+    //       </Switch>
+    //     )}
+    //   </div>
+    // )
+
     return (
       <div>
-        {isLoggedIn ? (
           <Switch>
             <Route path="/test" component={Cart}/>
             <Route path="/home" component={Home} />
             <Route path="/checkout" component={CheckoutPage} />
             <Route path="/watches" component={AllWatches} />
-            <Redirect to="/home" />
-
-            {/* <Route path="/test" component={Cart}/> */}
-          </Switch>
-        ) : (
-          <Switch>
+            {/* <Redirect to="/home" /> */}
+            <Route path="/watches" component={AllWatches} />
             <Route path='/' exact component={ Login } />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            {/* <Route path="/test" component={Cart}/> */}
           </Switch>
-        )}
       </div>
     )
+
   }
 }
 

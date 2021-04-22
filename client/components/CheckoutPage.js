@@ -5,7 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-export default function AddressForm() {
+export default function AddressForm(props) {
+    console.log(props)
     return (
         <React.Fragment>
             <Typography variant="h1" align="center">
