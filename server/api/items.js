@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const Item = require('../db/models/item');
-
 router.get('/', async (req, res, next) => {
     console.log('hello');
     try {
