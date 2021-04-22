@@ -4,6 +4,7 @@
   font-size: 30px;
   background-color:rgba(R, G, B, A);
   background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(102,99,99,1) 100%, rgba(0,212,255,1) 100%);
+  color: white;
 }
 
 /* body {
@@ -18,9 +19,21 @@
   padding: 10px;
 } */
 
-navbar {
-  display: flex;
-  justify-content: left;
+section.navbar {
+  background: transparent !important;
+  display: inline-block;
+  justify-content:space-around;
+  align-items: right;
+  margin-bottom: 0 !important;
+  font-size: 20px;
+}
+
+h3.cart, button.login, button.checkout  {
+  background: transparent !important;
+  display: inline-block;
+  justify-content: space-around;
+  margin: 5px;
+  text-align: right;
 }
 
 section.slider, img {

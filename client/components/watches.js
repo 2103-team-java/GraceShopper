@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchWatches } from "../store/watches";
 import { Link } from "react-router-dom";
-// import "./watches.css"
-// import {Slide} from './slide'
 
 export class AllWatches extends React.Component {
   componentDidMount() {
@@ -14,9 +12,12 @@ export class AllWatches extends React.Component {
     const watches = this.props.watches;
     return (
       <div>
-        <section className="navbar">
-              <h3>Cart(1)</h3>
+        <section className="nav">
+              <h3 className="cart" >Cart(1)</h3>
+              <button className="login">Login</button>
+              <button className="checkout">Checkout</button>
           </section>
+
         <section>
           <h1 className="header" data-aos="zoom-out">
             Java Luxury Timepieces
