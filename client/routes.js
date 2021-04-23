@@ -20,10 +20,12 @@ class Routes extends Component {
         return (
             <div>
                 <Route exact path="/" exact component={AllWatches} />
-                <Route exact path="/:id" component={SingleItem} />
+
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route exact path="/cart" component={Cart} />
+                {/* <Route exact path="/:id" component={SingleItem} /> */}
+                <Route exact path="watches/:id" component={SingleItem} />
                 <Route path="/cart/checkout" component={CheckoutPage} />
             </div>
         );

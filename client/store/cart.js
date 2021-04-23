@@ -2,14 +2,15 @@ import axios from 'axios'
 
 const initialState = {
   allWatches: [],
-  updatedUserWatches: {}
+  updatedUserWatches: {},
+  destroyTracker: {}
 }
 
 const GOT_WATCHES_FROM_SERVER = 'GOT_WATCHES_FROM_SERVER'
 const GOT_USER_WATCHES_FROM_SERVER = 'GOT_USER_WATCHES_FROM_SERVER'
 const UPDATE_USER_WATCH_QUANTITY = 'UPDATE_USER_WATCH_QUANTITY'
 const POST_ORDER = "POST_ORDER";
-
+const DESTROY_A_ORDER = 'DESTROY_A_ORDER'
 
 export const getWatchesFromServer = (getWatchesFromServer) => {
   return {
@@ -38,6 +39,13 @@ export const postOrder = (order) => {
     order,
   };
 };
+
+export const destroyOrder = (orderToDestroy) => {
+  return {
+    type: DESTROY_A_ORDER,
+    orderToDestroy
+  }
+}
 
 export const getWatches = () => {
   return async (dispatch) => {
@@ -69,6 +77,13 @@ export const createOrder = (order, history) => {
   };
 };
 
+export const deleteOrder = (orderToDestroyId) => {
+  return async (dispatch) => {
+    await axios.delete(`api/orders/${orderToDestroyId}`)
+    dispatch(destroyOrder(orderToDestroyId))
+  }
+}
+
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 export default function cartReducer(state = initialState, action) {
@@ -81,6 +96,9 @@ export default function cartReducer(state = initialState, action) {
       return {...state, updatedUserWatches: action.userWatchQty}
     case POST_ORDER:
       return {...state, updatedUserWatches: action.userWatchQty}
+    case DESTROY_A_ORDER: {
+      return {...state, destroyTracker: action.orderToDestroy}
+    }
     default:
       return state
   }
