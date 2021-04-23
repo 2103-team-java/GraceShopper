@@ -4,7 +4,7 @@
     font-size: 30px;
     background-color: rgba(R, G, B, A);
     /* background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(102,99,99,1) 100%, rgba(0,212,255,1) 100%); */
-    color: black;
+    /* color: black;
 } */
 
 /* body {
@@ -36,22 +36,23 @@ img {
     object-fit: contain;
 }
 
-/* p.brand, a, img {
+/* p, img{
   text-decoration: none;
-  font-size: 20px;
+  font-size: 50px;
   display: flex;
   justify-content:center;
   background:transparent !important;
   color: black;
 } */
-img {
+
+/* img {
     text-decoration: none;
     font-size: 20px;
     display: flex;
     justify-content: center;
     background: transparent !important;
     color: black;
-}
+} */
 
 /* label {
   display: block;

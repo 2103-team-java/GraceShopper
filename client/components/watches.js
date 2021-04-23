@@ -80,25 +80,11 @@ export class AllWatches extends React.Component {
                     {watches.map((watch) => (
                         <Grid item xs={3}>
                             {/* <section className="watchInfo" key={watch.id}> */}
-                            <Link to={`/${watch.id}`}>
-                                {' '}
-                                <img src={watch.ImageURL} />
-                            </Link>
-                            <Typography className="brand">
-                                {watch.brand}
-                            </Typography>
-                            <Typography className="brand">
-                                {watch.name}
-                            </Typography>
-                            <Typography className="brand">
-                                ${watch.price}
-                            </Typography>
-                            {/* <img src={watch.ImageURL} /> */}
-                            {/* </section> */}
+                            <Link to={`/${watch.id}`}> {' '} <img src={watch.ImageURL} /></Link>
+                            <Typography className="brand">{watch.brand} </Typography>
+                            <Typography className="brand">{watch.name} </Typography>
+                            <Typography className="brand">${watch.price} </Typography>
                         </Grid>
-                        // <section>
-                        //     // <h2> Contact Info</h2>
-                        // </section>
                     ))}
                 </Grid>
             </div>
