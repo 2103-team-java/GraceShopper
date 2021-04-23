@@ -34,7 +34,6 @@ export class SingleItem extends React.Component {
         usersOrders[0] = this.props.orders.allWatches[i]
       }
     }
-    // console.log("userOrders[0]", usersOrders[0])
 
     usersOrders[0].items.map((eachItem) => {
       if (eachItem.id === singleItem.id) {
@@ -43,13 +42,6 @@ export class SingleItem extends React.Component {
           itemId: eachItem.id,
           quantity:(eachItem.order.quantity + 1)
         })
-        console.log({
-          userId: eachItem.order.userId,
-          itemId: eachItem.id,
-          quantity: (eachItem.order.quantity + 1)
-        })
-        //skips some adds
-        this.props.getWatchesFromServer()
       } else {
         this.props.createOrder(singleItem)
       }
