@@ -1,21 +1,19 @@
-import { Button, Link, makeStyles } from '@material-ui/core';
+import { Link, makeStyles } from '@material-ui/core';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 import Routes from './routes';
+import { ShoppingBasket } from '@material-ui/icons';
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
+    linkText: {
+        fontSize: 17,
     },
     navLink: {
-        padding: 5,
+        padding: 8,
+    },
+    navlinks: {
+        flex: 1,
+        justifyContent: 'flex-end',
     },
 }));
 const App = () => {
@@ -23,15 +21,19 @@ const App = () => {
     return (
         <div>
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar className={classes.navlinks}>
                     <IconButton
                         edge="start"
                         className={classes.menuButton}
                         color="inherit"
                         aria-label="menu"
                     ></IconButton>
-                    <Link href="/" color="inherit" className={classes.navLink}>
-                        <Typography variant="h6" className={classes.title}>
+                    <Link
+                        href="/watches"
+                        color="inherit"
+                        className={classes.navLink}
+                    >
+                        <Typography variant="h6" className={classes.linkText}>
                             Home
                         </Typography>
                     </Link>
@@ -40,27 +42,12 @@ const App = () => {
                         color="inherit"
                         className={classes.navLink}
                     >
-                        <Typography variant="h6" className={classes.title}>
+                        <Typography variant="h6" className={classes.linkText}>
                             Login
                         </Typography>
                     </Link>
-                    <Link
-                        href="/cart"
-                        color="inherit"
-                        className={classes.navLink}
-                    >
-                        <Typography variant="h6" className={classes.title}>
-                            Cart
-                        </Typography>
-                    </Link>
-                    <Link
-                        href="/cart/checkout"
-                        color="inherit"
-                        className={classes.navLink}
-                    >
-                        <Typography variant="h6" className={classes.title}>
-                            Checkout
-                        </Typography>
+                    <Link href="/cart" color="inherit">
+                        <ShoppingBasket fontSize="large" />
                     </Link>
                 </Toolbar>
             </AppBar>
