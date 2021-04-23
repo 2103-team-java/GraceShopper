@@ -1,7 +1,6 @@
-import { Button, Link, makeStyles } from '@material-ui/core';
+import { Link, makeStyles } from '@material-ui/core';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 import Routes from './routes';
 const useStyles = makeStyles((theme) => ({
