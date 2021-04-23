@@ -1,6 +1,4 @@
 const router = require('express').Router();
-// const { Order } = require('../db')
-// const { Item } = require('../db')
 const {
     models: { User, Order, Item },
 } = require('../db');
@@ -8,7 +6,6 @@ module.exports = router;
 
 router.get('/', async (req, res, next) => {
     try {
-        // console.log('hello')
         const orders = await User.findAll({
             include: [
                 {
