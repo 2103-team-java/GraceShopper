@@ -13,24 +13,6 @@ export class AllWatches extends React.Component {
         const watches = this.props.watches;
         return (
             <div>
-                {/* <section className="nav">
-                    <h3 className="cart">Cart(1)</h3>
-                    <Button
-                        className="login"
-                        variant="contained"
-                        color="primary"
-                    >
-                        Login
-                    </Button>
-                    <Button
-                        className="checkout"
-                        variant="contained"
-                        color="primary"
-                    >
-                        Checkout
-                    </Button>
-                </section> */}
-
                 <section>
                     <Typography
                         variant="h1"
@@ -80,7 +62,7 @@ export class AllWatches extends React.Component {
                     {watches.map((watch) => (
                         <Grid item xs={3}>
                             {/* <section className="watchInfo" key={watch.id}> */}
-                            <Link to={`/${watch.id}`}>
+                            <Link to={`/watches/${watch.id}`}>
                                 {' '}
                                 <img src={watch.ImageURL} />
                             </Link>

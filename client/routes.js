@@ -20,7 +20,7 @@ class Routes extends Component {
         return (
             <div>
                 <Route exact path="/watches" exact component={AllWatches} />
-                <Route exact path="/watches/:id" exact component={AllWatches} />
+                <Route exact path="/watches/:id" component={SingleItem} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route exact path="/cart" component={Cart} />
