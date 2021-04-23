@@ -11,13 +11,13 @@
   background-color: white;
 } */
 
-/* section.slider, img {
+section.slider, img {
   min-width: 100%;
   min-height: 100%;
   display:flex;
   justify-content:center;
   padding: 10px;
-} */
+}
 
 navbar {
     display: flex;
@@ -32,7 +32,6 @@ img {
     height: 100%;
     width: 100%;
     line-height: 5;
-    /* width: 100%; */
     object-fit: contain;
 }
 
@@ -66,10 +65,11 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+*/
 
 .header {
-  line-height: 7;
-} */
+  padding-top: 0.5em;
+} 
 
 /* h1.header {
   background-image: url('https://anscommerce.s3.ap-south-1.amazonaws.com/live/image/catalog/brandstore/johnson/Information/service-center-5.jpg');
