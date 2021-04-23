@@ -30,7 +30,11 @@ const App = () => {
                         color="inherit"
                         aria-label="menu"
                     ></IconButton>
-                    <Link href="/" color="inherit" className={classes.navLink}>
+                    <Link
+                        href="/watches"
+                        color="inherit"
+                        className={classes.navLink}
+                    >
                         <Typography variant="h6" className={classes.title}>
                             Home
                         </Typography>
