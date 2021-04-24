@@ -17,9 +17,10 @@ export function AllWatches(props) {
         style: 'currency',
         currency: 'USD',
     });
-    if (props.watches.length === 0) {
+
+    useEffect(() => {
         props.getWatches();
-    }
+    }, []);
     const watches = props.watches;
     return (
         <div>
