@@ -2,10 +2,11 @@ const router = require('express').Router();
 const {
     models: { User },
 } = require('../db');
-module.exports = router;
+const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
-router.get('/', async (req, res, next) => {
+router.get('/', requireToken, isAdmin, async (req, res, next) => {
     try {
+
         const users = await User.findAll({
             // explicitly select only the id and username fields - even though
             // users' passwords are encrypted, it won't help if we just
@@ -30,3 +31,5 @@ router.put('/checkout/:id', async (req, res, next) => {
         console.log(error);
     }
 });
+
+module.exports = router;

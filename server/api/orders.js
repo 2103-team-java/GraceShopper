@@ -32,15 +32,17 @@ router.post("/", async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
-        console.log('req.body is....', req.body);
+
         const toUpdate = await Order.findOne({
             where: {
                 userId: req.body.userId,
                 itemId: req.body.itemId,
             },
         });
-        console.log(toUpdate);
+        console.log('req.body is---->', req.body);
+        console.log("toUpdate", toUpdate);
         res.send(await toUpdate.update(req.body));
+
     } catch (error) {
         next(error);
     }
@@ -56,3 +58,13 @@ router.put('/checkout/:orderId', async (req, res, next) => {
         console.log(error);
     }
 });
+
+router.delete('/:orderToDestroyId', async (req, res, next) => {
+    try {
+      const orderToDestroy = await Order.findByPk(req.params.orderToDestroyId)
+      await orderToDestroy.destroy()
+      res.json(orderToDestroy)
+    } catch (error) {
+      next(error)
+    }
+  })

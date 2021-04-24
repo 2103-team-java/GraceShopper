@@ -42,9 +42,10 @@ export class SingleItem extends React.Component {
           itemId: eachItem.id,
           quantity:(eachItem.order.quantity + 1)
         })
-      } else {
-        this.props.createOrder(singleItem)
       }
+      // else {
+      //   this.props.createOrder(singleItem)
+      // }
     })
   }
 

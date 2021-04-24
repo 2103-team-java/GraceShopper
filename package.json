@@ -3,6 +3,10 @@
     "version": "2.0.0",
     "description": "mock e commerce website",
     "main": "index.js",
+    "engines": {
+        "node": "15.x",
+        "npm": "7.9.0"
+    },
     "scripts": {
         "build": "webpack",
         "build:dev": "npm run build -- --watch --mode=development",
@@ -21,6 +25,7 @@
     "license": "MIT",
     "dependencies": {
         "@material-ui/core": "^4.11.3",
+        "@material-ui/icons": "^4.11.2",
         "aos": "^2.3.4",
         "axios": "^0.21.1",
         "bcrypt": "^5.0.0",
