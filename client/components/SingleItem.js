@@ -6,6 +6,7 @@ import {
   getUserWatches,
   updateUserWatchCount,
   getWatches,
+  updateUserWatchCountTest,
 } from "../store/cart";
 
 export class SingleItem extends React.Component {
@@ -37,7 +38,7 @@ export class SingleItem extends React.Component {
 
     usersOrders[0].items.map((eachItem) => {
       if (eachItem.id === singleItem.id) {
-        this.props.updateUserWatchQty({
+        this.props.updateUserWatchCountTest({
           userId: eachItem.order.userId,
           itemId: eachItem.id,
           quantity:(eachItem.order.quantity + 1)
@@ -90,6 +91,9 @@ const mapDispatch = (dispatch) => {
     updateUserWatchQty: (obj) => dispatch(updateUserWatchCount(obj)),
     getUserWatchesFromServer: () => dispatch(getUserWatches()),
     getWatchesFromServer: () => dispatch(getWatches()),
+    updateUserWatchCountTest: (objectToUpdate) => {
+      dispatch(updateUserWatchCountTest(objectToUpdate))
+    },
   };
 };
 

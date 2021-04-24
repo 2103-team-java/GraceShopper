@@ -10,54 +10,6 @@ import { setAddressThunk, setInactive } from '../../store/checkout';
 import { connect } from 'react-redux';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
-const dummyData = {
-    id: 1,
-    username: 'sam',
-    password: '$2b$05$lHc/5BCJQug5Xm0rteJWeeH4ctCjayJgE7.IsvdTwuUafxMrG2tdC',
-    shippingAddress: '322 road, little neck, ny',
-    billingAddress: null,
-    createdAt: '2021-04-21T15:30:58.731Z',
-    updatedAt: '2021-04-21T15:30:58.731Z',
-    items: [
-        {
-            id: 3,
-            name: 'Constellation',
-            brand: 'Omega',
-            price: 4300,
-            decription:
-                'Discover the new look of these famous watches for women.',
-            ImageURL: null,
-            createdAt: '2021-04-21T15:30:58.766Z',
-            updatedAt: '2021-04-21T15:30:58.766Z',
-            order: {
-                quantity: 13,
-                createdAt: '2021-04-21T15:30:58.877Z',
-                updatedAt: '2021-04-21T15:30:58.877Z',
-                userId: 1,
-                itemId: 3,
-            },
-        },
-        {
-            id: 4,
-            name: 'GlobeMaster',
-            brand: 'Omega',
-            price: 7000,
-            decription:
-                'As the world"s first Master Chronometer, the Globemaster has set incredible new standards of watchmaking.',
-            ImageURL: null,
-            createdAt: '2021-04-21T15:30:58.767Z',
-            updatedAt: '2021-04-21T15:30:58.767Z',
-            order: {
-                quantity: 10,
-                createdAt: '2021-04-21T15:30:58.877Z',
-                updatedAt: '2021-04-21T15:30:58.877Z',
-                userId: 1,
-                itemId: 4,
-            },
-        },
-    ],
-};
-
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(5),
@@ -68,27 +20,24 @@ const useStyles = makeStyles((theme) => ({
 
 function Checkout(props) {
     const classes = useStyles();
-    const userId = dummyData.id;
     const [address, addAddress] = useState({});
+    const items = props.location.state.userData.items;
     console.log(props);
     const handleSubmit = () => {
         const shippingAddress = `${address.address1}, ${address.country},${address.city},${address.state},${address.zip}`;
-        props.saveAddress(userId, {
+        props.saveAddress(items.userId, {
             shippingAddress: shippingAddress,
         });
         props.closeOrder(1);
     };
-
+    console.log(items);
     const handleChange = (event) => {
         addAddress({ ...address, [event.target.name]: event.target.value });
         console.log(address);
     };
 
-    const items = dummyData.items;
     let total = 0;
-    dummyData.items.forEach(
-        (item) => (total += item.price * item.order.quantity)
-    );
+    items.forEach((item) => (total += item.price * item.order.quantity));
     let formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
