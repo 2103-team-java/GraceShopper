@@ -4,15 +4,36 @@ import {
   getWatches,
   getUserWatches,
   updateUserWatchCount,
-  deleteOrder
+  updateUserWatchCountTest,
+  deleteOrder,
+  deleteOrderTest
 } from '../store/cart';
 import { Link } from 'react-router-dom';
 
 export class Cart extends Component {
+  constructor () {
+    super()
+    this.helpFunc = this.helpFunc.bind(this)
+  }
+
   componentDidMount() {
-    // console.log('component mounted');
+    console.log('component mounted');
     // console.log('this.state is ...', this.state);
     this.props.getWatchesFromServer();
+  }
+
+  helpFunc(evt, passedObj) {
+    // this.props.updateUserWatchQty(passedObj)
+    evt.preventDefault()
+    this.props.updateUserWatchCountTest(passedObj)
+    this.props.getWatchesFromServer()
+  }
+
+  helpDeleteFunc(evt, toDelete) {
+    // this.props.updateUserWatchQty(passedObj)
+    evt.preventDefault()
+    this.props.deleteOrderTest(toDelete)
+    this.props.getWatchesFromServer()
   }
 
   render() {
@@ -24,9 +45,9 @@ export class Cart extends Component {
         items: [
           {
             id: 1,
-            name: 'PlaceHolder1',
-            brand: 'PHBrand1',
-            order: { quantity: 1, userId: 1 }
+            name: '',
+            brand: '',
+            order: {}
           }
         ]
       }
@@ -36,9 +57,11 @@ export class Cart extends Component {
         usersOrders[0] = this.props.orders.allWatches[i];
       }
     }
+
     usersOrders[0].items.forEach((eachItem) => {
       eachItem.userId = usersOrders[0].id;
     });
+
 
     return (
       <div>
@@ -65,34 +88,37 @@ export class Cart extends Component {
                     <h3>Quantity: {eachItem.order.quantity}</h3>
                     <h3>Item Id: {eachItem.id}</h3>
                     <h3>UserId: {eachItem.order.userId}</h3>
-                    <button
-                      onClick={() => {
-                        this.props.updateUserWatchQty({
+                    <button type='button'
+                      onClick={(evt) => {
+                        this.helpFunc(evt,{
                           userId: eachItem.order.userId,
                           itemId: eachItem.id,
-                          quantity: eachItem.order.quantity + 1
-                        });
-                        this.props.getWatchesFromServer();
-                      }}
+                          quantity: eachItem.order.quantity + 1})
+                        }
+                      }
                     >
                       Increase Quantity
                     </button>
-                    <button
-                      onClick={() => {
-                        this.props.updateUserWatchQty({
+                    <button type='button'
+                      onClick={(evt) => {
+                        this.helpFunc(evt,{
                           userId: eachItem.order.userId,
                           itemId: eachItem.id,
-                          quantity: eachItem.order.quantity - 1
-                        });
-                        this.props.getWatchesFromServer();
-                      }}
+                          quantity: eachItem.order.quantity - 1})
+                        }
+                      }
                     >
                       Decrease Quantity
                     </button>
-                    <button
+                    {/* <button
                       onClick={() => {
                         this.props.deleteOrder(eachItem.order.orderId);
                         this.props.getWatchesFromServer();
+                      }}
+                    > */}
+                    <button
+                      onClick={(evt) => {
+                        this.helpDeleteFunc(evt, eachItem.order.orderId)
                       }}
                     >
                       Remove Item from Cart
@@ -132,8 +158,14 @@ const mapDispatch = (dispatch) => ({
   getUserWatchesFromServer: () => dispatch(getUserWatches()),
   updateUserWatchQty: (objectToUpdate) =>
     dispatch(updateUserWatchCount(objectToUpdate)),
+  updateUserWatchCountTest: (objectToUpdate) => {
+    dispatch(updateUserWatchCountTest(objectToUpdate))
+  },
   deleteOrder: (orderToDestroy) => {
     dispatch(deleteOrder(orderToDestroy))
+  },
+  deleteOrderTest: (orderToDestroy) => {
+    dispatch(deleteOrderTest(orderToDestroy))
   }
 });
 
