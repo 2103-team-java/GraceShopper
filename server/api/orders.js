@@ -7,10 +7,9 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
     try {
         const orders = await User.findAll({
-            attributes: ['id', 'username'],
             include: [
                 {
-                    model: Item, attributes: ['id', 'name'],
+                    model: Item,
                     required: true,
                 },
             ],
@@ -37,6 +36,8 @@ router.post("/", async (req, res, next) => {
 router.put('/', async (req, res, next) => {
     try {
 
+        const { userId, itemId, quantity } = req.body
+
         const toUpdate = await Order.findOne({
             where: {
                 userId: req.body.userId,
@@ -44,7 +45,7 @@ router.put('/', async (req, res, next) => {
             },
         });
 
-        res.send(await toUpdate.update(req.body));
+        res.send(await toUpdate.update({ userId, itemId, quantity }));
 
     } catch (error) {
         next(error);

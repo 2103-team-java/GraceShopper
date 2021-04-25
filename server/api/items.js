@@ -5,9 +5,7 @@ const Order = require("../db/models/order");
 
 router.get('/', async (req, res, next) => {
     try {
-      const allWatches = await Item.findAll({
-        attributes: ['id', 'name']
-      });
+      const allWatches = await Item.findAll();
       res.json(allWatches);
     } catch (error) {
       next(error);
@@ -17,9 +15,7 @@ router.get('/', async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const singleItem = await Item.findByPk(req.params.id, {
-      attributes: ['id', 'name']
-    })
+    const singleItem = await Item.findByPk(req.params.id)
     res.json(singleItem)
   } catch (err) {
     next(err)
