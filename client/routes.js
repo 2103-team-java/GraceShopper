@@ -19,8 +19,8 @@ class Routes extends Component {
     render() {
         return (
             <div>
-                <Route path="/" exact component={AllWatches} />
                 <Route exact path="/watches/:id" component={SingleItem} />
+                <Route exact path="/watches" exact component={AllWatches} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route exact path="/cart" component={Cart} />

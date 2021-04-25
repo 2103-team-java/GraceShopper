@@ -1,6 +1,4 @@
 const router = require('express').Router();
-// const { Order } = require('../db')
-// const { Item } = require('../db')
 const {
     models: { User, Order, Item },
 } = require('../db');
@@ -8,7 +6,6 @@ module.exports = router;
 
 router.get('/', async (req, res, next) => {
     try {
-        // console.log('hello')
         const orders = await User.findAll({
             include: [
                 {
@@ -35,15 +32,17 @@ router.post("/", async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try {
-        // console.log('req.body is....', req.body);
+
         const toUpdate = await Order.findOne({
             where: {
                 userId: req.body.userId,
                 itemId: req.body.itemId,
             },
         });
-        // console.log(toUpdate);
+        console.log('req.body is---->', req.body);
+        console.log("toUpdate", toUpdate);
         res.send(await toUpdate.update(req.body));
+
     } catch (error) {
         next(error);
     }
