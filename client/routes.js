@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route } from 'react-router-dom';
+import { withRouter, Route, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import Cart from './components/Cart';
 import { me } from './store';
@@ -19,7 +19,7 @@ class Routes extends Component {
     render() {
         return (
             <div>
-                <Route exact path="/watches" exact component={AllWatches} />
+                <Route path="/watches" exact component={AllWatches} />
                 <Route exact path="/watches/:id" component={SingleItem} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
