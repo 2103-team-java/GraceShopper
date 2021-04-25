@@ -44,9 +44,13 @@ export class SingleItem extends React.Component {
           quantity:(eachItem.order.quantity + 1)
         })
       }
-      // else {
-      //   this.props.createOrder(singleItem)
-      // }
+      else if (eachItem.id !== singleItem.id) {
+        this.props.createOrder({
+          userId: eachItem.order.userId,
+          itemId: singleItem.id,
+          quantity: 1,
+        })
+      }
     })
   }
 

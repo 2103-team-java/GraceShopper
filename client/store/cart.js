@@ -83,8 +83,7 @@ export const createOrder = (order, history) => {
   return async (dispatch) => {
     const response = await axios.post("/api/orders", order);
     const orderData = response.data;
-    dispatch(postRobot(orderData));
-    // history.push("/robots");
+    dispatch(postOrder(orderData));
   };
 };
 
