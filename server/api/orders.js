@@ -7,9 +7,10 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
     try {
         const orders = await User.findAll({
+            attributes: ['id', 'username'],
             include: [
                 {
-                    model: Item,
+                    model: Item, attributes: ['id', 'name'],
                     required: true,
                 },
             ],
