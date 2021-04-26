@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import { fetchWatches } from '../store/watches';
 import { Link } from 'react-router-dom';
 import { Grid, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import { LocalConvenienceStoreOutlined } from '@material-ui/icons';
 
 export class AllWatches extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            brand: 'All',
             singleWatch: [],
         };
         this.handleChange = this.handleChange.bind(this);
@@ -22,14 +19,16 @@ export class AllWatches extends React.Component {
     //the state is changing after all the watches render. So it's rendering the watches from the previous section
     handleChange(event) {
         console.log('i have been hit');
-        this.setState({ brand: event.target.value });
         const watches = this.props.watches;
         if (watches.length > 0) {
             const singleWatch = watches.filter(
-                (watch) => watch.brand === this.state.brand
+                (watch) => watch.brand === event.target.value
             );
-            console.log(singleWatch);
-            this.setState({ singleWatch: singleWatch });
+
+            console.log(this.state.brand);
+            this.setState({
+                singleWatch: singleWatch,
+            });
         }
     }
 
