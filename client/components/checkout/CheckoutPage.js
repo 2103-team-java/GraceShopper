@@ -22,18 +22,20 @@ function Checkout(props) {
     const classes = useStyles();
     const [address, addAddress] = useState({});
     const items = props.location.state.userData.items;
-    console.log(props);
+    const orderIds = items.map((item) => item.order.orderId);
+    console.log('orderIds', orderIds);
     const handleSubmit = () => {
         const shippingAddress = `${address.address1}, ${address.country},${address.city},${address.state},${address.zip}`;
         props.saveAddress(items.userId, {
             shippingAddress: shippingAddress,
         });
-        props.closeOrder(1);
+
+        orderIds.forEach((orderId) => props.closeOrder(orderId));
     };
     console.log(items);
     const handleChange = (event) => {
         addAddress({ ...address, [event.target.name]: event.target.value });
-        console.log(address);
+        // console.log(address);
     };
 
     let total = 0;
