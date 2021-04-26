@@ -22,8 +22,11 @@ router.get('/', async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const addCart = await Order.create(req.body)
-    res.status(201).json(addCart)
+
+    const addOrder = await Order.create(req.body)
+
+    res.send(addOrder);
+
   } catch (err) {
     next(err)
   }
@@ -33,15 +36,16 @@ router.post("/", async (req, res, next) => {
 router.put('/', async (req, res, next) => {
     try {
 
+        const { userId, itemId, quantity } = req.body
+
         const toUpdate = await Order.findOne({
             where: {
                 userId: req.body.userId,
                 itemId: req.body.itemId,
             },
         });
-        console.log('req.body is---->', req.body);
-        console.log("toUpdate", toUpdate);
-        res.send(await toUpdate.update(req.body));
+
+        res.send(await toUpdate.update({ userId, itemId, quantity }));
 
     } catch (error) {
         next(error);
