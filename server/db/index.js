@@ -23,23 +23,15 @@ User.belongsToMany(Item, {
 Item.belongsToMany(User, {
   through: Order
 })
-// Item.belongsTo(Order)
+
 
 
 module.exports = {
   db,
-  // User,
-  // Item,
-  // Order,
   models: {
     User,
-    // Cart,
     Item,
     Order
   },
 }
 
-//super many to many table
-
-// if relationship DNE { create ...}
-// if relationship exists { udpate w/ quantity ++ }

@@ -50,6 +50,7 @@ export const destroyOrder = (orderToDestroy) => {
 export const getWatches = () => {
   return async (dispatch) => {
     const { data: orders } = await axios.get('/api/orders');
+    console.log('the orders are ...', orders)
     dispatch(getWatchesFromServer(orders));
   };
 };
@@ -68,12 +69,21 @@ export const updateUserWatchCount = (updatedUserWatchObj) => {
   };
 };
 
-export const createOrder = (order, history) => {
+//https://blog.jscrambler.com/async-dispatch-chaining-with-redux-thunk/
+export const updateUserWatchCountTest = (updatedUserWatchObj) => {
+  return async (dispatch) => {
+  await Promise.all([
+    dispatch(updateUserWatchCount(updatedUserWatchObj))
+  ])
+  return dispatch(getWatches())
+  };
+}
+
+export const createOrder = (order) => {
   return async (dispatch) => {
     const response = await axios.post("/api/orders", order);
     const orderData = response.data;
-    dispatch(postRobot(orderData));
-    // history.push("/robots");
+    dispatch(postOrder(orderData));
   };
 };
 
@@ -81,6 +91,15 @@ export const deleteOrder = (orderToDestroyId) => {
   return async (dispatch) => {
     await axios.delete(`api/orders/${orderToDestroyId}`)
     dispatch(destroyOrder(orderToDestroyId))
+  }
+}
+
+export const deleteOrderTest = (orderToDestroyId) => {
+  return async (dispatch) => {
+    await Promise.all([
+      dispatch(deleteOrder(orderToDestroyId))
+    ])
+    return dispatch(getWatches())
   }
 }
 
