@@ -4,6 +4,8 @@ import React from 'react';
 
 import Routes from './routes';
 import { ShoppingBasket } from '@material-ui/icons';
+import { logout } from './store';
+import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
     linkText: {
         fontSize: 17,
@@ -16,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'flex-end',
     },
 }));
-const App = () => {
+const App = ({ handleClick, isLoggedIn }) => {
     const classes = useStyles();
     return (
         <div>
@@ -37,13 +39,40 @@ const App = () => {
                             Home
                         </Typography>
                     </Link>
+                    {isLoggedIn ? (
+                        <div>
+                            {/* The navbar will show these links after you log in */}
+                            <Link
+                                onClick={handleClick}
+                                color="inherit"
+                                className={classes.linkText}
+                            >
+                                Logout
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className={classes.navLink}>
+                            <Link
+                                href="/login"
+                                color="inherit"
+                                className={classes.linkText}
+                            >
+                                <Typography
+                                    variant="h6"
+                                    className={classes.linkText}
+                                >
+                                    Login
+                                </Typography>
+                            </Link>
+                        </div>
+                    )}
                     <Link
-                        href="/login"
+                        href="/signup"
                         color="inherit"
-                        className={classes.navLink}
+                        className={classes.linkText}
                     >
                         <Typography variant="h6" className={classes.linkText}>
-                            Login
+                            Signup
                         </Typography>
                     </Link>
                     <Link href="/cart" color="inherit">
@@ -55,5 +84,17 @@ const App = () => {
         </div>
     );
 };
+const mapState = (state) => {
+    return {
+        isLoggedIn: !!state.auth.id,
+    };
+};
 
-export default App;
+const mapDispatch = (dispatch) => {
+    return {
+        handleClick() {
+            dispatch(logout());
+        },
+    };
+};
+export default connect(mapState, mapDispatch)(App);
