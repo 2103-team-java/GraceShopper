@@ -17,51 +17,42 @@ import Filter from "./Filter";
 
 //     const classes = useStyles();
 
-//     let formatter = new Intl.NumberFormat("en-US", {
-//     style: "currency",
-//     currency: "USD",
-//   });
-
-//   if (props.watches.length === 0) {
-//       props.getWatches();
-//     }
 
 //   const watches = props.watches;
 //   const brand = props.brand;
 
 export class AllWatches extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      brand: "All",
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-  componentDidMount() {
-    this.props.getWatches('All');
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            brand: "All",
+            Watches: [],
+        };
+        // this.handleChange = this.handleChange.bind(this);
+    }
+    componentDidMount() {
+        const allWatches = this.props.getWatches('All');
+        this.setState({Watches: allWatches})
+    }
+    
+    
+    //the state is changing after all the watches render. So it's rendering the watches from the previous section
+    // handleChange(event) {
+    //     console.log(event.target.value);
+    //     this.setState({ brand: event.target.value })
+    //     console.log({...this.state})
+    //         this.props.getWatches(this.state.brand);
+    //         // return promise;
+    //     }
+        
+        render() {
+          let formatter = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+        });
+      
 
-//   filterWatches(event) {
-//     const brand = [...this.sate.brand]
-//       event.preventDefault();
-//       console.log(event.target.value);
-//       this.setState({
-//         brand.filter(brands => {
-//             return brands.brand.includes(this.state.brand)
-//         })
-//     });
-//   };
-
-//the state is changing after all the watches render. So it's rendering the watches from the previous section
-handleChange(event) {
-    this.setState({
-        ...this.state, brand: event.target.value
-    })
-    this.props.getWatches(this.state.brand);
-}
-
-  render() {
-    const watches = this.props.watches;
+    const watches = this.state.Watches;
     return (
       <div>
         <section>
@@ -119,7 +110,7 @@ handleChange(event) {
             <select value = {this.state.brand} onChange={this.handleChange}>
             <option value="All">All</option>
             <option value="Omega">Omega</option>
-            <option value="Rolex">Rolex</option>
+            <option value="Rolex">Rolex</option>``
             <option value="Patek Phillipe">Patek Phillipe</option>
             <option value="Audemars Piguet">Audemars Piguet</option>
             <option value="Vacheron Constantin">Vacheron Constantin</option>
@@ -131,11 +122,6 @@ handleChange(event) {
         </div>
       </div>
 
-        {/* <div className="control" style={{ minWidth: "300px" }}>
-        <input onChange={(e) => { this.filterByInput(e);
-          }} style={{ width: "100%" }} placeholder="Filter by" type="text" />
-      </div> */}
-
         <Grid container>
           {watches.map((watch) => (
             <Grid item key={watch.id}>
@@ -145,9 +131,8 @@ handleChange(event) {
               </Link>
               <Typography variant="h4">{watch.brand}</Typography>
               <Typography variant="h4">{watch.name}</Typography>
-              <Typography variant="h4">${watch.price}</Typography>
               <Typography variant="h4">
-                {/* {formatter.format(watch.price)} */}
+                {formatter.format(watch.price)}
               </Typography>
             </Grid>
           ))}
