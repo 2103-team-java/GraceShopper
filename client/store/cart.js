@@ -6,6 +6,7 @@ const initialState = {
   destroyTracker: {}
 }
 
+const TOKEN = 'token'
 const GOT_WATCHES_FROM_SERVER = 'GOT_WATCHES_FROM_SERVER'
 const GOT_USER_WATCHES_FROM_SERVER = 'GOT_USER_WATCHES_FROM_SERVER'
 const UPDATE_USER_WATCH_QUANTITY = 'UPDATE_USER_WATCH_QUANTITY'
@@ -47,16 +48,25 @@ export const destroyOrder = (orderToDestroy) => {
   }
 }
 
+//api/orders
+// header ... localstorage should work here ... !
+
 export const getWatches = () => {
   return async (dispatch) => {
-    const { data: orders } = await axios.get('/api/orders');
-    console.log('the orders are ...', orders)
+    const token = window.localStorage.getItem(TOKEN)
+    const { data: orders } = await axios.get('/api/orders', {
+      headers: {
+        "authorization": token
+      }
+    });
+    //console.log('the orders are ...', orders)
     dispatch(getWatchesFromServer(orders));
   };
 };
 
 export const getUserWatches = (singleuser) => {
   return async (dispatch) => {
+    const token = window.localStorage.getItem(TOKEN)
     const { data: orders } = await axios.get(`/api/orders/${singleuser}`);
     dispatch(getUserWatchesFromServer(orders));
   };
@@ -64,7 +74,9 @@ export const getUserWatches = (singleuser) => {
 
 export const updateUserWatchCount = (updatedUserWatchObj) => {
   return async (dispatch) => {
-    const {data: updated} = await axios.put('/api/orders', updatedUserWatchObj);
+    const token = window.localStorage.getItem(TOKEN)
+    //const {data: updated} = await axios.put('/api/orders', updatedUserWatchObj);
+    const {data: updated} = await axios.put('/api/orders', updatedUserWatchObj, {headers: {"authorization": token}});
     dispatch(updateUserWatchQty(updated));
   };
 };
@@ -72,9 +84,10 @@ export const updateUserWatchCount = (updatedUserWatchObj) => {
 //https://blog.jscrambler.com/async-dispatch-chaining-with-redux-thunk/
 export const updateUserWatchCountTest = (updatedUserWatchObj) => {
   return async (dispatch) => {
-  await Promise.all([
-    dispatch(updateUserWatchCount(updatedUserWatchObj))
-  ])
+    const token = window.localStorage.getItem(TOKEN)
+    await Promise.all([
+      dispatch(updateUserWatchCount(updatedUserWatchObj))
+    ])
   return dispatch(getWatches())
   };
 }
@@ -82,7 +95,8 @@ export const updateUserWatchCountTest = (updatedUserWatchObj) => {
 export const createOrder = (order) => {
   console.log("order", order)
   return async (dispatch) => {
-    const response = await axios.post("/api/orders", order);
+    const token = window.localStorage.getItem(TOKEN)
+    const response = await axios.post("/api/orders", order, {headers: {"authorization": token}});
     const orderData = response.data;
     dispatch(postOrder(orderData));
   };
@@ -90,13 +104,15 @@ export const createOrder = (order) => {
 
 export const deleteOrder = (orderToDestroyId) => {
   return async (dispatch) => {
-    await axios.delete(`api/orders/${orderToDestroyId}`)
+    const token = window.localStorage.getItem(TOKEN)
+    await axios.delete(`api/orders/${orderToDestroyId}`, {headers: {"authorization": token}})
     dispatch(destroyOrder(orderToDestroyId))
   }
 }
 
 export const deleteOrderTest = (orderToDestroyId) => {
   return async (dispatch) => {
+    const token = window.localStorage.getItem(TOKEN)
     await Promise.all([
       dispatch(deleteOrder(orderToDestroyId))
     ])
