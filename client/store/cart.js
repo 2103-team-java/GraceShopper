@@ -79,7 +79,7 @@ export const updateUserWatchCountTest = (updatedUserWatchObj) => {
   };
 }
 
-export const createOrder = (order, history) => {
+export const createOrder = (order) => {
   return async (dispatch) => {
     const response = await axios.post("/api/orders", order);
     const orderData = response.data;

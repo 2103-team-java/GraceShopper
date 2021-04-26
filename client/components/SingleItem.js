@@ -37,6 +37,7 @@ export class SingleItem extends React.Component {
     }
 
     usersOrders[0].items.map((eachItem) => {
+      //do i need magic methods in the backend
       if (eachItem.id !== singleItem.id) {
         return this.props.createOrder({
           userId: eachItem.order.userId,
@@ -44,13 +45,13 @@ export class SingleItem extends React.Component {
           quantity: 1,
         })
       }
-      // if (eachItem.id === singleItem.id) {
-      //   return this.props.updateUserWatchCountTest({
-      //     userId: eachItem.order.userId,
-      //     itemId: eachItem.id,
-      //     quantity:(eachItem.order.quantity + 1)
-      //   })
-      // }
+      if (eachItem.id === singleItem.id) {
+        return this.props.updateUserWatchCountTest({
+          userId: eachItem.order.userId,
+          itemId: eachItem.id,
+          quantity:(eachItem.order.quantity + 1)
+        })
+      }
     })
   }
 
