@@ -22,11 +22,13 @@ function Checkout(props) {
     const classes = useStyles();
     const [address, addAddress] = useState({});
     const items = props.location.state.userData.items;
+    const userId = props.location.state.userData.id;
+    console.log('ITEM', props.location.state.userData);
     const orderIds = items.map((item) => item.order.orderId);
     console.log('orderIds', orderIds);
     const handleSubmit = () => {
         const shippingAddress = `${address.address1}, ${address.country},${address.city},${address.state},${address.zip}`;
-        props.saveAddress(items.userId, {
+        props.saveAddress(userId, {
             shippingAddress: shippingAddress,
         });
 
