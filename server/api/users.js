@@ -5,6 +5,7 @@ const {
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
 router.get('/', requireToken, isAdmin, async (req, res, next) => {
+// router.get('/', requireToken, async (req, res, next) => {
     try {
 
         const users = await User.findAll({
@@ -21,7 +22,7 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
 
 //routes to update the shipping address of users
 
-router.put('/checkout/:id', async (req, res, next) => {
+router.put('/checkout/:id', requireToken, async (req, res, next) => {
     const userId = req.params.id;
     try {
         const user = await User.findByPk(userId);
