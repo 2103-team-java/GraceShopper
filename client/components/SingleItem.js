@@ -21,7 +21,8 @@ export class SingleItem extends React.Component {
     this.props.getWatchesFromServer();
   }
 
-  updateCart(id) {
+
+  updateCart() {
     const { globalusername } = this.props;
     const { singleItem } = this.props;
     let usersOrders = [
@@ -37,6 +38,7 @@ export class SingleItem extends React.Component {
       },
     ];
 
+
     for (let i = 0; i < this.props.orders.allWatches.length; i++) {
       if (this.props.orders.allWatches[i].username === globalusername) {
         usersOrders[0] = this.props.orders.allWatches[i];
@@ -46,12 +48,11 @@ export class SingleItem extends React.Component {
     let check = false;
     let userID = usersOrders[0].items[0].order.userId;
 
-//eachItem.order.userId
 
     usersOrders[0].items.map((eachItem) => {
       if (eachItem.id === singleItem.id) {
-        check = true;
-        this.props.updateUserWatchCountTest({
+        check = true
+         this.props.updateUserWatchCountTest({
           userId: userID,
           itemId: eachItem.id,
           quantity: eachItem.order.quantity + 1,
@@ -66,21 +67,23 @@ export class SingleItem extends React.Component {
         itemId: singleItem.id,
         quantity: 1,
       });
+
       for (let i = 0; i < this.props.orders.allWatches.length; i++) {
         if (this.props.orders.allWatches[i].username === globalusername) {
           this.props.orders.allWatches[i].items.push(singleItem);
         }
       }
 
+      const { id } = this.props.match.params;
+      this.props.oneItem(id);
+      this.props.getWatchesFromServer();
     }
-
 
   }
 
   render() {
     const { singleItem } = this.props;
 
-    console.log("props", this.props);
 
     return (
       <div>
@@ -95,9 +98,11 @@ export class SingleItem extends React.Component {
         <h3>Price: $ {singleItem.price}</h3>
         <h3>Description: {singleItem.description}</h3>
 
+
         <button type="submit" onClick={() => this.updateCart(singleItem.id)}>
           Add to cart
         </button>
+
       </div>
     );
   }
