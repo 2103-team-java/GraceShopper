@@ -24,7 +24,9 @@ export const me = () => async dispatch => {
         authorization: token
       }
     })
-    return dispatch(setAuth(res.data))
+    const { id, isAdmin, username } = res.data
+    return dispatch(setAuth({ id, isAdmin, username }))
+    // return dispatch(setAuth(res.data))
   }
 }
 
