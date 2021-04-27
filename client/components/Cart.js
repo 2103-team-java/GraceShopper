@@ -93,7 +93,8 @@ export class Cart extends Component {
                         this.helpFunc(evt,{
                           userId: eachItem.order.userId,
                           itemId: eachItem.id,
-                          quantity: eachItem.order.quantity + 1})
+                          quantity: eachItem.order.quantity + 1
+                        })
                         }
                       }
                     >
@@ -104,7 +105,8 @@ export class Cart extends Component {
                         this.helpFunc(evt,{
                           userId: eachItem.order.userId,
                           itemId: eachItem.id,
-                          quantity: eachItem.order.quantity - 1})
+                          quantity: eachItem.order.quantity - 1
+                        })
                         }
                       }
                     >

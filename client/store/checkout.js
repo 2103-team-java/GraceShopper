@@ -12,11 +12,14 @@ export const updateStatus = () => ({
     type: UPDATE_STATUS,
 });
 
+const TOKEN = 'token';
 export const setAddressThunk = (id, address) => {
     return async () => {
-        const token = window.localStorage.getItem(TOKEN)
+        const token = window.localStorage.getItem(TOKEN);
         try {
-            const res = await axios.put(`/api/users/checkout/${id}`, address, {headers: {"authorization": token}});
+            const res = await axios.put(`/api/users/checkout/${id}`, address, {
+                headers: { authorization: token },
+            });
         } catch (error) {
             console.log(error);
         }
@@ -25,9 +28,15 @@ export const setAddressThunk = (id, address) => {
 
 export const setInactive = (orderId) => {
     return async () => {
-        const token = window.localStorage.getItem(TOKEN)
+        const token = window.localStorage.getItem(TOKEN);
         try {
-            await axios.put(`/api/orders/checkout/${orderId}`, {headers: {"authorization": token}});
+            await axios.put(
+                `/api/orders/checkout/${orderId}`,
+                {},
+                {
+                    headers: { authorization: token },
+                }
+            );
         } catch (error) {
             console.log(error);
         }

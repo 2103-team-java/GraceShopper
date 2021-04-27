@@ -93,6 +93,7 @@ export const updateUserWatchCountTest = (updatedUserWatchObj) => {
 }
 
 export const createOrder = (order) => {
+  console.log("order", order)
   return async (dispatch) => {
     const token = window.localStorage.getItem(TOKEN)
     const response = await axios.post("/api/orders", order, {headers: {"authorization": token}});
