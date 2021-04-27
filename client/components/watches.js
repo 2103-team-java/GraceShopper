@@ -198,22 +198,33 @@ export class AllWatches extends React.Component {
           </svg>
         </section>
 
+        <section>
+            {/* <p>Java Luxury Timepieces is the largest authorized watch retailer in the US with the most comprehensive watch brand selection.</p> */}
+        </section>
+
         <section className="slider">
           <div
             id="carousel-example"
             className="carousel slide"
             data-ride="carousel"
             data-interval="3000"
+            data-height="4000"
           >
             <div className="carousel-inner">
               <div className="item active">
-                <img src="https://www.morettis.com/wp-content/uploads/2019/10/m126234-0015-october-rolex-banner.jpg" />
+                <img className='watchPhoto' src="https://s3.amazonaws.com/ISHOWIMAGES/omega/ORIGINAL/45200001_2.jpg" />
               </div>
               <div className="item">
-                <img src="https://www.patseas.gr/wp-content/uploads/2015/01/patek-philippe-banner-watch.jpg" />
+                <img className='watchPhoto' src="https://i.imgur.com/ExyCka0.jpg" />
               </div>
               <div className="item">
-                <img src="https://argyll-arcade.com/site/wp-content/uploads/2016/10/cm-audemars-piguet-royal-oak-chronograph-watch.jpg" />
+                <img className='watchPhoto' src="https://www.patseas.gr/wp-content/uploads/2015/01/patek-philippe-banner-watch.jpg" />
+              </div>
+              <div className="item">
+                <img className='watchPhoto' src="https://603305.smushcdn.com/1598090/wp-content/uploads/2020/04/Vacheron-Constantin-banner.jpg?lossy=1&strip=1&webp=1" />
+              </div>
+              <div className="item">
+                <img className='watchPhoto' src="https://argyll-arcade.com/site/wp-content/uploads/2016/10/cm-audemars-piguet-royal-oak-chronograph-watch.jpg" />
               </div>
             </div>
 
@@ -235,8 +246,6 @@ export class AllWatches extends React.Component {
         </section>
 
         <div className="filter">
-          {/* <div className="filter-result">{this.props.count} Watches </div> */}
-
           <div className="filter-brand"> Filter By Brand <select onChange={this.handleChange}>
               <option name="brand" value="All">
                 All

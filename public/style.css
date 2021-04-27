@@ -8,6 +8,10 @@ a.MuiTypography-root.MuiLink-root.MuiLink-underlineHover.makeStyles-linkText-1.M
   display: inline-flex;
 }
 
+section {
+  padding: 10px;
+}
+
 /* TITLE LOGO */
 svg#logo {
   position: relative;
@@ -125,6 +129,12 @@ svg#logo path:nth-child(21) {
 }
 
 /* SLIDER */
+
+img.watchPhoto {
+  min-height: 400px;
+  object-fit: cover;
+}
+
 section.slider,
 img {
   min-width: 100%;
