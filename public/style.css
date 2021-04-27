@@ -1,122 +1,173 @@
-/* * {
-    background-color: white;
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 30px;
-    background-color: rgba(R, G, B, A);
-    /* background: linear-gradient(90deg, rgba(31,31,31,1) 0%, rgba(102,99,99,1) 100%, rgba(0,212,255,1) 100%); */
-    /* color: black;
-} */
+* {
+  font-family: "Cinzel Decorative", cursive !important;
+  background-color: #152238;
+  color: white;
+}
 
-/* body {
-  background-color: white;
-} */
+a.MuiTypography-root.MuiLink-root.MuiLink-underlineHover.makeStyles-linkText-1.MuiTypography-colorInherit {
+  display: inline-flex;
+}
 
-section.slider, img {
+/* TITLE LOGO */
+svg#logo {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+svg#logo path:nth-child(2) {
+  stroke-dasharray: 162.8671417236328;
+  stroke-dashoffset: 162.8671417236328;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(3) {
+  stroke-dasharray: 296.7498474121094;
+  stroke-dashoffset: 296.7498474121094;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(4) {
+  stroke-dasharray: 249.02613830566406;
+  stroke-dashoffset: 249.02613830566406;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(5) {
+  stroke-dasharray: 296.7497253417969;
+  stroke-dashoffset: 296.7497253417969;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(6) {
+  stroke-dasharray: 237.55209350585938;
+  stroke-dashoffset: 237.55209350585938;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(7) {
+  stroke-dasharray: 285.3449401855469;
+  stroke-dashoffset: 285.3449401855469;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(8) {
+  stroke-dasharray: 325.2586975097656;
+  stroke-dashoffset: 325.2586975097656;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(9) {
+  stroke-dasharray: 285.3475646972656;
+  stroke-dashoffset: 285.3475646972656;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(10) {
+  stroke-dasharray: 337.38092041015625;
+  stroke-dashoffset: 337.38092041015625;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(11) {
+  stroke-dasharray: 209.60031127929688;
+  stroke-dashoffset: 209.60031127929688;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(12) {
+  stroke-dasharray: 233.1754150390625;
+  stroke-dashoffset: 233.1754150390625;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(13) {
+  stroke-dasharray: 182.80072021484375;
+  stroke-dashoffset: 182.80072021484375;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(14) {
+  stroke-dasharray: 392.36224365234375;
+  stroke-dashoffset: 392.36224365234375;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(15) {
+  stroke-dasharray: 276.425537109375;
+  stroke-dashoffset: 276.425537109375;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(16) {
+  stroke-dasharray: 239.27781677246094;
+  stroke-dashoffset: 239.27781677246094;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(17) {
+  stroke-dasharray: 182.7988739013672;
+  stroke-dashoffset: 182.7988739013672;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(18) {
+  stroke-dasharray: 276.425537109375;
+  stroke-dashoffset: 276.425537109375;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(19) {
+  stroke-dasharray: 268.518310546875;
+  stroke-dashoffset: 268.518310546875;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(20) {
+  stroke-dasharray: 276.425537109375;
+  stroke-dashoffset: 276.425537109375;
+  animation: line-anim 3s ease forwards .5s;
+}
+svg#logo path:nth-child(21) {
+  stroke-dasharray: 256.518310546875;
+  stroke-dashoffset: 256.518310546875;
+  animation: line-anim 3s ease forwards .5s;
+}
+
+@keyframes line-anim{
+  to {
+    stroke-dashoffset: 0;;
+  }
+}
+
+/* SLIDER */
+section.slider,
+img {
   min-width: 100%;
   min-height: 100%;
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
   padding: 10px;
 }
 
-navbar {
-    display: flex;
-    justify-content: left;
+div.MuiToolbar-root.MuiToolbar-regular.makeStyles-navlinks-3.MuiToolbar-gutters {
+  display: flex;
+  justify-content: space-around;
 }
 
 section.slider,
 img {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: block;
-    height: 100%;
-    width: 100%;
-    line-height: 5;
-    object-fit: contain;
-}
-
-/* p, img{
-  text-decoration: none;
-  font-size: 50px;
-  display: flex;
-  justify-content:center;
-  background:transparent !important;
-  color: black;
-} */
-
-/* img {
-    text-decoration: none;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    background: transparent !important;
-    color: black;
-} */
-
-/* label {
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 5;
+  object-fit: contain;
 }
-
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-*/
 
 .header {
   padding-top: 0.5em;
-} 
-
-/* h1.header {
-  background-image: url('https://anscommerce.s3.ap-south-1.amazonaws.com/live/image/catalog/brandstore/johnson/Information/service-center-5.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  color: #0ABAB5;
-  font-weight:bolder;
-  text-shadow: 1px 1px 2px black;
-  font-size: 50px;
-  height: 400px;
-  margin: 10px;
-  z-index: 1;
-  background-color: transparent !important;
-} */
+}
 
 img {
-    min-width: 300px;
-    min-height: 300px;
-    max-width: 300px;
-    max-height: 300px;
-    object-fit: cover;
-    background-color: transparent !important;
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: cover;
+  background-color: transparent !important;
 }
 
 img:hover {
-    transform: scale(1.1);
-    transition: transform 0.2s ease;
-    background-color: transparent !important;
-}
-/* 
-p {
-  margin: 0;
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
   background-color: transparent !important;
 }
-
-section.watchInfo {
-  display: inline-block;
-  justify-content: space-around;
-  margin: 5px;
-  padding: 20px;
-  border-radius: 30px;
-  border: 2px double #0ABAB5;
-  background: transparent !important;
-} */
 
 .filter {
   display: flex;
@@ -128,3 +179,15 @@ section.watchInfo {
 .filter div {
   flex: 1;
 }
+ select {
+   padding: 5px;
+   margin: 5px;
+ }
+
+ /* SINGLE WATCH */
+ .singleWatch {
+   border: 1px solid white;
+   border-radius: 30px;
+ }
+
+
