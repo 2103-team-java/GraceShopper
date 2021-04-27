@@ -7,6 +7,7 @@ import { me } from './store';
 import CheckoutPage from './components/checkout/CheckoutPage';
 import SingleItem from './components/SingleItem';
 import AllWatches from './components/watches';
+import CartHistory from './components/CartHistory';
 
 /**
  * COMPONENT
@@ -21,10 +22,12 @@ class Routes extends Component {
             <div>
                 <Route exact path="/watches/:id" component={SingleItem} />
                 <Route exact path="/watches" exact component={AllWatches} />
+                <Route exact path="/" exact component={AllWatches} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route exact path="/cart" component={Cart} />
                 <Route path="/cart/checkout" component={CheckoutPage} />
+                <Route path="/cart/history" component={CartHistory} />
             </div>
         );
     }

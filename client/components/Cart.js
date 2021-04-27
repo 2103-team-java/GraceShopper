@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import {
-  getWatches,
-  getUserWatches,
-  updateUserWatchCount,
-  updateUserWatchCountTest,
-  deleteOrder,
-  deleteOrderTest
+    getWatches,
+    getUserWatches,
+    updateUserWatchCount,
+    updateUserWatchCountTest,
+    deleteOrder,
+    deleteOrderTest,
 } from '../store/cart';
 import { Link } from 'react-router-dom';
 
@@ -23,18 +23,18 @@ export class Cart extends Component {
     // console.log('output of getWatches is.... ', this.props.orders)
   }
 
-  helpFunc(evt, passedObj) {
-    // this.props.updateUserWatchQty(passedObj)
-    evt.preventDefault()
-    this.props.updateUserWatchCountTest(passedObj)
-    this.props.getWatchesFromServer()
-  }
+    helpFunc(evt, passedObj) {
+        // this.props.updateUserWatchQty(passedObj)
+        evt.preventDefault();
+        this.props.updateUserWatchCountTest(passedObj);
+        this.props.getWatchesFromServer();
+    }
 
-  helpDeleteFunc(evt, toDelete) {
-    // this.props.updateUserWatchQty(passedObj)
-    evt.preventDefault()
-    this.props.deleteOrderTest(toDelete)
-    this.props.getWatchesFromServer()
+    helpDeleteFunc(evt, toDelete) {
+      // this.props.updateUserWatchQty(passedObj)
+      evt.preventDefault();
+      this.props.deleteOrderTest(toDelete);
+      this.props.getWatchesFromServer();
   }
 
   render() {
@@ -58,10 +58,9 @@ export class Cart extends Component {
       }
     }
 
-    usersOrders[0].items.forEach((eachItem) => {
-      eachItem.userId = usersOrders[0].id;
-    });
-
+        usersOrders[0].items.forEach((eachItem) => {
+            eachItem.userId = usersOrders[0].id;
+        });
 
 
 
@@ -79,6 +78,16 @@ export class Cart extends Component {
                 <h3>Checkout Here</h3>
               </div>
             </Link>
+            <Link
+                            to={{
+                                pathname: '/cart/history',
+                                state: { userData: usersOrders[0] },
+                            }}
+                        >
+                            <div>
+                                <h3>Cart History</h3>
+                            </div>
+                        </Link>
             <div>
               {usersOrders[0].items.map((eachItem) => {
                 return (
@@ -155,26 +164,26 @@ export class Cart extends Component {
 }
 
 const mapState = (state) => {
-  return {
-    globalusername: state.auth.username,
-    orders: state.cart
-  };
+    return {
+        globalusername: state.auth.username,
+        orders: state.cart,
+    };
 };
 
 const mapDispatch = (dispatch) => ({
-  getWatchesFromServer: () => dispatch(getWatches()),
-  getUserWatchesFromServer: () => dispatch(getUserWatches()),
-  updateUserWatchQty: (objectToUpdate) =>
-    dispatch(updateUserWatchCount(objectToUpdate)),
-  updateUserWatchCountTest: (objectToUpdate) => {
-    dispatch(updateUserWatchCountTest(objectToUpdate))
-  },
-  deleteOrder: (orderToDestroy) => {
-    dispatch(deleteOrder(orderToDestroy))
-  },
-  deleteOrderTest: (orderToDestroy) => {
-    dispatch(deleteOrderTest(orderToDestroy))
-  }
+    getWatchesFromServer: () => dispatch(getWatches()),
+    getUserWatchesFromServer: () => dispatch(getUserWatches()),
+    updateUserWatchQty: (objectToUpdate) =>
+        dispatch(updateUserWatchCount(objectToUpdate)),
+    updateUserWatchCountTest: (objectToUpdate) => {
+        dispatch(updateUserWatchCountTest(objectToUpdate));
+    },
+    deleteOrder: (orderToDestroy) => {
+        dispatch(deleteOrder(orderToDestroy));
+    },
+    deleteOrderTest: (orderToDestroy) => {
+        dispatch(deleteOrderTest(orderToDestroy));
+    },
 });
 
 export default connect(mapState, mapDispatch)(Cart);

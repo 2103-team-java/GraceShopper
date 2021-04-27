@@ -7,17 +7,18 @@ import cartReducer from './cart'
 import watchesReducer from './watches'
 import oneItemReducer from "./singleWatches";
 import userReducer from "./user";
+import cartHistoryReducer from './cartHistory';
 // import filterWatchesReducer from "./filter"
 
 // import cart from './cart'
 
-const reducer = combineReducers({ auth: auth, cart: cartReducer, watchesReducer, oneItemReducer, userReducer })
+const reducer = combineReducers({ auth: auth, cart: cartReducer, watchesReducer, oneItemReducer, userReducer, cartHistoryReducer })
 
 
 const middleware = composeWithDevTools(
-  applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
+    applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
 const store = createStore(reducer, middleware);
 
 export default store;
-export * from "./auth";
+export * from './auth';
