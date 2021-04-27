@@ -21,7 +21,6 @@ export class SingleItem extends React.Component {
     this.props.getWatchesFromServer();
   }
 
-
   updateCart() {
     const { globalusername } = this.props;
     const { singleItem } = this.props;
@@ -38,7 +37,6 @@ export class SingleItem extends React.Component {
       },
     ];
 
-
     for (let i = 0; i < this.props.orders.allWatches.length; i++) {
       if (this.props.orders.allWatches[i].username === globalusername) {
         usersOrders[0] = this.props.orders.allWatches[i];
@@ -48,11 +46,10 @@ export class SingleItem extends React.Component {
     let check = false;
     let userID = usersOrders[0].items[0].order.userId;
 
-
     usersOrders[0].items.map((eachItem) => {
       if (eachItem.id === singleItem.id) {
-        check = true
-         this.props.updateUserWatchCountTest({
+        check = true;
+        this.props.updateUserWatchCountTest({
           userId: userID,
           itemId: eachItem.id,
           quantity: eachItem.order.quantity + 1,
@@ -80,31 +77,28 @@ export class SingleItem extends React.Component {
       this.props.oneItem(id);
       this.props.getWatchesFromServer();
     }
-
   }
 
   render() {
     const { singleItem } = this.props;
 
-
     return (
-      <div className='singleWatch'>
+      <div className="singleWatch">
         <img
           src={singleItem.ImageURL}
           alt={singleItem.name}
           className="image"
         />
+        <div className='watchInfo'>
+          <h3 className="name">Name: {singleItem.name}</h3>
+          <h3 className="brand">Brand: {singleItem.brand}</h3>
+          <h3 className="price">Price: $ {singleItem.price}</h3>
+          <h3>Description: {singleItem.description}</h3>
+        </div>
 
-        <h3 className='name'>Name: {singleItem.name}</h3>
-        <h3 className='brand'>Brand: {singleItem.brand}</h3>
-        <h3 className='price'>Price: $ {singleItem.price}</h3>
-        <h3>Description: {singleItem.description}</h3>
-
-
-        <button type="submit" onClick={() => this.updateCart(singleItem.id)}>
+        <button className='btn-1' type="submit" onClick={() => this.updateCart(singleItem.id)}>
           Add to cart
         </button>
-
       </div>
     );
   }
