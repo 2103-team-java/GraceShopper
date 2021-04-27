@@ -46,7 +46,7 @@ export class AllWatches extends React.Component {
     }
     return (
       <div>
-        <section>
+        <section className="javatime">
           <svg id="logo"
             width="881"
             height="77"

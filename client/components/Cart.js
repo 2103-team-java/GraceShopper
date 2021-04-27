@@ -75,13 +75,13 @@ export class Cart extends Component {
               }}
             >
               <div>
-                <h3>Checkout Page</h3>
+                <h3 className="checkoutHere">CHECKOUT HERE</h3>
               </div>
             </Link>
-            <div>
+            <div className="cartBox">
               {usersOrders[0].items.map((eachItem) => {
                 return (
-                  <div>
+                  <div className="cartWatch">
                     <img src={eachItem.ImageURL} />
                     <h3>Brand: {eachItem.brand}</h3>
                     <h3>Name: {eachItem.name}</h3>
@@ -142,7 +142,9 @@ export class Cart extends Component {
           </div>
         </Link>
         )}
+      <img className="model" src="https://0.soompi.io/wp-content/uploads/2020/11/17194128/Hyun-Bin-3.jpg" alt=""/>
       </div>
+
 
     );
   }
