@@ -57,7 +57,9 @@ export class SingleItem extends React.Component {
           itemId: eachItem.id,
           quantity: eachItem.order.quantity + 1,
         });
-
+        const { id } = this.props.match.params;
+        this.props.oneItem(id);
+        this.props.getWatchesFromServer();
       }
     });
 
