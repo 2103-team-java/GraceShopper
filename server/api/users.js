@@ -3,8 +3,8 @@ const {
     models: { User },
 } = require('../db');
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
-
-router.get('/', requireToken, isAdmin, async (req, res, next) => {
+//requireToken
+router.get('/', async (req, res, next) => {
 // router.get('/', requireToken, async (req, res, next) => {
     try {
 

@@ -8,6 +8,7 @@ import {
   getWatches,
   updateUserWatchCountTest,
 } from "../store/cart";
+import { gotUser } from "../store/user";
 
 export class SingleItem extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ export class SingleItem extends React.Component {
     const { id } = this.props.match.params;
     this.props.oneItem(id);
     this.props.getWatchesFromServer();
+    this.props.gotUsers()
   }
 
 
@@ -48,6 +50,8 @@ export class SingleItem extends React.Component {
     let check = false;
     let userID = usersOrders[0].items[0].order.userId;
 
+    console.log("props.orders.allWatches --->", this.props.orders.allWatches)
+    console.log("userId ---->", usersOrders)
 
     usersOrders[0].items.map((eachItem) => {
       if (eachItem.id === singleItem.id) {
@@ -86,6 +90,7 @@ export class SingleItem extends React.Component {
   render() {
     const { singleItem } = this.props;
 
+    console.log("props", this.props)
 
     return (
       <div>
@@ -115,6 +120,7 @@ const mapState = (state) => {
     singleItem: state.oneItemReducer.item,
     globalusername: state.auth.username,
     orders: state.cart,
+    users: state.userReducer
   };
 };
 
@@ -128,6 +134,7 @@ const mapDispatch = (dispatch) => {
     updateUserWatchCountTest: (objectToUpdate) => {
       dispatch(updateUserWatchCountTest(objectToUpdate));
     },
+    gotUsers: () => dispatch(gotUser())
   };
 };
 
