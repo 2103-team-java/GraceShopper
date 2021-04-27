@@ -1,13 +1,12 @@
 const router = require('express').Router();
 const {
-    models: { User },
+    models: { User, Item },
 } = require('../db');
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
 router.get('/', requireToken, isAdmin, async (req, res, next) => {
-// router.get('/', requireToken, async (req, res, next) => {
+    // router.get('/', requireToken, async (req, res, next) => {
     try {
-
         const users = await User.findAll({
             // explicitly select only the id and username fields - even though
             // users' passwords are encrypted, it won't help if we just
@@ -30,6 +29,22 @@ router.put('/checkout/:id', requireToken, async (req, res, next) => {
         res.send(update);
     } catch (error) {
         console.log(error);
+    }
+});
+
+router.get('/:userId', requireToken, async (req, res, next) => {
+    try {
+        const orders = await User.findByPk(req.params.userId, {
+            include: [
+                {
+                    model: Item,
+                    required: true,
+                },
+            ],
+        });
+        res.json(orders);
+    } catch (error) {
+        next(error);
     }
 });
 

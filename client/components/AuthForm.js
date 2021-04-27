@@ -1,7 +1,6 @@
 import { Link } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { authenticate } from '../store';
 
 /**
@@ -9,7 +8,6 @@ import { authenticate } from '../store';
  */
 const AuthForm = (props) => {
     const { name, displayName, handleSubmit, error } = props;
-    // const history = useHistory();
     return (
         <div>
             <form onSubmit={handleSubmit} name={name}>
@@ -26,14 +24,7 @@ const AuthForm = (props) => {
                     <input name="password" type="password" />
                 </div>
                 <div>
-                    <button
-                        type="submit"
-                        onClick={() => {
-                            // history.push('/watches');
-                        }}
-                    >
-                        {displayName}
-                    </button>
+                    <button type="submit">{displayName}</button>
                 </div>
                 {error && error.response && <div> {error.response.data} </div>}
             </form>

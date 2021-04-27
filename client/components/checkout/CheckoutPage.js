@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 function Checkout(props) {
     const classes = useStyles();
     const [address, addAddress] = useState({});
+    console.log(props);
     const items = props.location.state.userData.items;
     const userId = props.location.state.userData.id;
     console.log('ITEM', props.location.state.userData);
