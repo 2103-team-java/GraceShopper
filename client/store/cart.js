@@ -68,6 +68,7 @@ export const getUserWatches = (singleuser) => {
   return async (dispatch) => {
     const token = window.localStorage.getItem(TOKEN)
     const { data: orders } = await axios.get(`/api/orders/${singleuser}`);
+    console.log('data output is ...', data)
     dispatch(getUserWatchesFromServer(orders));
   };
 };

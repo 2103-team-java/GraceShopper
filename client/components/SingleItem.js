@@ -8,6 +8,7 @@ import {
   getWatches,
   updateUserWatchCountTest,
 } from "../store/cart";
+import { gotUser } from "../store/user";
 
 export class SingleItem extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ export class SingleItem extends React.Component {
     const { id } = this.props.match.params;
     this.props.oneItem(id);
     this.props.getWatchesFromServer();
+    this.props.gotUsers()
   }
 
   updateCart() {
@@ -43,8 +45,22 @@ export class SingleItem extends React.Component {
       }
     }
 
+
+    let userID
+
+    for (let i = 0; i < this.props.users.users.length; i++) {
+      if (this.props.users.users[i].username === globalusername) {
+        userID = this.props.users.users[i].id
+      }
+    }
+
+
     let check = false;
-    let userID = usersOrders[0].items[0].order.userId;
+    // userID = usersOrders[0].items[0].order.userId;
+
+    // console.log('global name is --->', globalusername)
+    // console.log("props.orders.allWatches --->", this.props.orders.allWatches)
+    // console.log("userId ---->", userID)
 
     usersOrders[0].items.map((eachItem) => {
       if (eachItem.id === singleItem.id) {
@@ -73,6 +89,7 @@ export class SingleItem extends React.Component {
         }
       }
 
+
       const { id } = this.props.match.params;
       this.props.oneItem(id);
       this.props.getWatchesFromServer();
@@ -81,7 +98,7 @@ export class SingleItem extends React.Component {
 
   render() {
     const { singleItem } = this.props;
-
+    console.log("props", this.props)
     return (
       <div className="singleWatch">
         <img
@@ -109,6 +126,7 @@ const mapState = (state) => {
     singleItem: state.oneItemReducer.item,
     globalusername: state.auth.username,
     orders: state.cart,
+    users: state.userReducer
   };
 };
 
@@ -122,6 +140,7 @@ const mapDispatch = (dispatch) => {
     updateUserWatchCountTest: (objectToUpdate) => {
       dispatch(updateUserWatchCountTest(objectToUpdate));
     },
+    gotUsers: () => dispatch(gotUser())
   };
 };
 

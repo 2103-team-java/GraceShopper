@@ -1,23 +1,19 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
-import thunkMiddleware from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import auth from './auth';
-import cartReducer from './cart';
-import watchesReducer from './watches';
-import oneItemReducer from './singleWatches';
+import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {createLogger} from 'redux-logger'
+import thunkMiddleware from 'redux-thunk'
+import {composeWithDevTools} from 'redux-devtools-extension'
+import auth from './auth'
+import cartReducer from './cart'
+import watchesReducer from './watches'
+import oneItemReducer from "./singleWatches";
+import userReducer from "./user";
 import cartHistoryReducer from './cartHistory';
 // import filterWatchesReducer from "./filter"
 
 // import cart from './cart'
 
-const reducer = combineReducers({
-    auth: auth,
-    cart: cartReducer,
-    watchesReducer,
-    oneItemReducer,
-    cartHistoryReducer,
-});
+const reducer = combineReducers({ auth: auth, cart: cartReducer, watchesReducer, oneItemReducer, userReducer, cartHistoryReducer })
+
 
 const middleware = composeWithDevTools(
     applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
