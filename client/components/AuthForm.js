@@ -1,26 +1,15 @@
-<<<<<<< HEAD
-import { Link } from "@material-ui/core";
-import React from "react";
-import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { authenticate } from "../store";
-=======
 import { Link } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
->>>>>>> f212adfd6a7045baf5a499d1ca861fc0aa0890be
 
 /**
  * COMPONENT
  */
 const AuthForm = (props) => {
-<<<<<<< HEAD
-  const { name, displayName, handleSubmit, error } = props;
-  // const history = useHistory();
-  return (
-    
-    <div className="loginBox">
+    const { name, displayName, handleSubmit, error } = props;
+    return (
+      <div className="loginBox">
       <section className="login">
         <form className="loginForm" onSubmit={handleSubmit} name={name}>
           <div id="outerbox">
@@ -56,35 +45,8 @@ const AuthForm = (props) => {
         </form>
       </section>
     </div>
-
   );
-=======
-    const { name, displayName, handleSubmit, error } = props;
-    return (
-        <div>
-            <form onSubmit={handleSubmit} name={name}>
-                <div>
-                    <label htmlFor="username">
-                        <small>Username</small>
-                    </label>
-                    <input name="username" type="text" />
-                </div>
-                <div>
-                    <label htmlFor="password">
-                        <small>Password</small>
-                    </label>
-                    <input name="password" type="password" />
-                </div>
-                <div>
-                    <button type="submit">{displayName}</button>
-                </div>
-                {error && error.response && <div> {error.response.data} </div>}
-            </form>
-        </div>
-    );
->>>>>>> f212adfd6a7045baf5a499d1ca861fc0aa0890be
-};
-
+}
 /**
  * CONTAINER
  *   Note that we have two different sets of 'mapStateToProps' functions -

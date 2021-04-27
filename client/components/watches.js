@@ -282,7 +282,7 @@ export class AllWatches extends React.Component {
           </div>
         </div>
 
-        <Grid spacing={1.5} container >
+        <Grid container spacing={1} >
           {watches.map((watch) => (
             <Grid m={3} p={3} spacing={4}
             style={{
