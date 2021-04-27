@@ -6,11 +6,12 @@ import auth from './auth'
 import cartReducer from './cart'
 import watchesReducer from './watches'
 import oneItemReducer from "./singleWatches";
+import userReducer from "./user";
 // import filterWatchesReducer from "./filter"
 
 // import cart from './cart'
 
-const reducer = combineReducers({ auth: auth, cart: cartReducer, watchesReducer, oneItemReducer})
+const reducer = combineReducers({ auth: auth, cart: cartReducer, watchesReducer, oneItemReducer, userReducer })
 
 
 const middleware = composeWithDevTools(

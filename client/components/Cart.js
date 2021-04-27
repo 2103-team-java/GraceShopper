@@ -20,6 +20,7 @@ export class Cart extends Component {
     console.log('component mounted');
     // console.log('this.state is ...', this.state);
     this.props.getWatchesFromServer();
+    // console.log('output of getWatches is.... ', this.props.orders)
   }
 
   helpFunc(evt, passedObj) {
@@ -38,8 +39,7 @@ export class Cart extends Component {
 
   render() {
     const { globalusername } = this.props;
-    // console.log('globalIs ..... ', globalusername);
-    // console.log('props are', this.props);
+    console.log('output of getWatches is.... ', this.props.orders)
     let usersOrders = [
       {
         items: [
@@ -63,11 +63,12 @@ export class Cart extends Component {
     });
 
 
+
+
     return (
       <div>
         {globalusername ? (
           <div>
-            <h3>{globalusername}'s Cart</h3>
             <Link
               to={{
                 pathname: '/cart/checkout',
@@ -75,56 +76,61 @@ export class Cart extends Component {
               }}
             >
               <div>
-                <h3>Checkout Page</h3>
+                <h3>Checkout Here</h3>
               </div>
             </Link>
             <div>
               {usersOrders[0].items.map((eachItem) => {
                 return (
                   <div>
-                    <img src={eachItem.ImageURL} />
-                    <h3>Brand: {eachItem.brand}</h3>
-                    <h3>Name: {eachItem.name}</h3>
-                    <h3>Quantity: {eachItem.order.quantity}</h3>
-                    <h3>Item Id: {eachItem.id}</h3>
-                    <h3>UserId: {eachItem.order.userId}</h3>
-                    <button type='button'
-                      onClick={(evt) => {
-                        this.helpFunc(evt,{
-                          userId: eachItem.order.userId,
-                          itemId: eachItem.id,
-                          quantity: eachItem.order.quantity + 1
-                        })
+                    {eachItem.name ? (
+                      <div>
+                      <img src={eachItem.ImageURL} />
+                      <h3>Brand: {eachItem.brand}</h3>
+                      <h3>Watch: {eachItem.name}</h3>
+                      <h3>Quantity in Cart: {eachItem.order.quantity}</h3>
+                      {/* <h3>Item Id: {eachItem.id}</h3>
+                      <h3>UserId: {eachItem.order.userId}</h3> */}
+                      <button type='button'
+                        onClick={(evt) => {
+                          this.helpFunc(evt,{
+                            userId: eachItem.order.userId,
+                            itemId: eachItem.id,
+                            quantity: eachItem.order.quantity + 1})
+                          }
                         }
-                      }
-                    >
-                      Increase Quantity
-                    </button>
-                    <button type='button'
-                      onClick={(evt) => {
-                        this.helpFunc(evt,{
-                          userId: eachItem.order.userId,
-                          itemId: eachItem.id,
-                          quantity: eachItem.order.quantity - 1
-                        })
+                      >
+                        Add One
+                      </button>
+                      <button type='button'
+                        onClick={(evt) => {
+                          this.helpFunc(evt,{
+                            userId: eachItem.order.userId,
+                            itemId: eachItem.id,
+                            quantity: eachItem.order.quantity - 1})
+                          }
                         }
-                      }
-                    >
-                      Decrease Quantity
-                    </button>
-                    {/* <button
-                      onClick={() => {
-                        this.props.deleteOrder(eachItem.order.orderId);
-                        this.props.getWatchesFromServer();
-                      }}
-                    > */}
-                    <button
-                      onClick={(evt) => {
-                        this.helpDeleteFunc(evt, eachItem.order.orderId)
-                      }}
-                    >
-                      Remove Item from Cart
-                    </button>
+                      >
+                        Remove One
+                      </button>
+                      {/* <button
+                        onClick={() => {
+                          this.props.deleteOrder(eachItem.order.orderId);
+                          this.props.getWatchesFromServer();
+                        }}
+                      > */}
+                      <button
+                        onClick={(evt) => {
+                          this.helpDeleteFunc(evt, eachItem.order.orderId)
+                        }}
+                      >
+                        Remove All from Cart
+                      </button>
+                      </div>
+                      ) : (
+                        <h3>Your Cart is Empty!</h3>
+                      )
+                    }
                   </div>
                 );
               })}
@@ -137,7 +143,7 @@ export class Cart extends Component {
           }}
         >
           <div>
-            <h3>Please Log In</h3>
+            <h3>Please Log In Here</h3>
             {/* Log in Page doesn't auto refresh after logging in */}
           </div>
         </Link>

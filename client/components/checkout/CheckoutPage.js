@@ -23,6 +23,7 @@ function Checkout(props) {
     const [address, addAddress] = useState({});
     const items = props.location.state.userData.items;
     const userId = props.location.state.userData.id;
+    console.log('userID is ....' , userId)
     console.log('ITEM', props.location.state.userData);
     const orderIds = items.map((item) => item.order.orderId);
     console.log('orderIds', orderIds);
