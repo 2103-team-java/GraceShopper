@@ -76,9 +76,9 @@ const App = ({ handleClick, isLoggedIn }) => {
                         color="inherit"
                         className={classes.linkText}
                     >
-                        <Typography variant="h6" className={classes.linkText}>
+                        {/* <Typography variant="h6" className={classes.linkText}>
                             Signup
-                        </Typography>
+                        </Typography> */}
                     </Link>
                     <Link
                         className="cart"
