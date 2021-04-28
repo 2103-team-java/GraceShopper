@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { List, Paper } from '@material-ui/core';
+import { Link, List, Paper } from '@material-ui/core';
 import { setAddressThunk, setInactive } from '../../store/checkout';
 import { connect } from 'react-redux';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -15,25 +15,36 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(5),
         marginBottom: theme.spacing(3),
         padding: theme.spacing(5),
+        // palette: {
+        //     primary: {
+        //         main: '#152238',
+        //     }
+        // }
     },
 }));
 
 function Checkout(props) {
     const classes = useStyles();
     const [address, addAddress] = useState({});
-    const items = props.location.state.userData.items;
     console.log(props);
+    const items = props.location.state.userData.items;
+    const userId = props.location.state.userData.id;
+    console.log('userID is ....', userId);
+    console.log('ITEM', props.location.state.userData);
+    const orderIds = items.map((item) => item.order.orderId);
+    console.log('orderIds', orderIds);
     const handleSubmit = () => {
         const shippingAddress = `${address.address1}, ${address.country},${address.city},${address.state},${address.zip}`;
-        props.saveAddress(items.userId, {
+        props.saveAddress(userId, {
             shippingAddress: shippingAddress,
         });
-        props.closeOrder(1);
+
+        orderIds.forEach((orderId) => props.closeOrder(orderId));
     };
     console.log(items);
     const handleChange = (event) => {
         addAddress({ ...address, [event.target.name]: event.target.value });
-        console.log(address);
+        // console.log(address);
     };
 
     let total = 0;
@@ -43,7 +54,7 @@ function Checkout(props) {
         currency: 'USD',
     });
     return (
-        <React.Fragment>
+        <React.Fragment className="checkoutpagecolor">
             <form onSubmit={() => this.handleSubmit}>
                 <React.Fragment>
                     <Paper className={classes.paper}>
@@ -109,7 +120,6 @@ function Checkout(props) {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
-                                    required
                                     id="zip"
                                     name="zip"
                                     label="Zip / Postal code"
@@ -233,14 +243,16 @@ function Checkout(props) {
                 </React.Fragment>
             </form>
             <Grid item xs={12} align="center">
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => handleSubmit()}
-                >
-                    {' '}
-                    pay for items
-                </Button>
+                <Link href="/thankyou">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => handleSubmit()}
+                    >
+                        {' '}
+                        pay for items
+                    </Button>
+                </Link>
             </Grid>
         </React.Fragment>
     );
@@ -254,3 +266,9 @@ const mapDispatch = (dispatch) => {
 };
 
 export default connect(null, mapDispatch)(Checkout);
+
+// <script>
+// function myFunction() {
+//   confirm("Thank you for your order!");
+// }
+// </script>

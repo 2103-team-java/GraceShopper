@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const App = ({ handleClick, isLoggedIn }) => {
     const classes = useStyles();
     return (
-        <div>
+        <div id="navbar">
             <AppBar position="static">
                 <Toolbar className={classes.navlinks}>
                     <IconButton
@@ -47,7 +47,12 @@ const App = ({ handleClick, isLoggedIn }) => {
                                 color="inherit"
                                 className={classes.linkText}
                             >
-                                Logout
+                                <Typography
+                                    variant="h6"
+                                    className={classes.linkText}
+                                >
+                                    Logout
+                                </Typography>
                             </Link>
                         </div>
                     ) : (
@@ -71,11 +76,20 @@ const App = ({ handleClick, isLoggedIn }) => {
                         color="inherit"
                         className={classes.linkText}
                     >
-                        <Typography variant="h6" className={classes.linkText}>
+                        {/* <Typography variant="h6" className={classes.linkText}>
                             Signup
-                        </Typography>
+                        </Typography> */}
                     </Link>
-                    <Link href="/cart" color="inherit">
+                    <Link
+                        className="cart"
+                        href="/cart"
+                        color="inherit"
+                        className={classes.linkText}
+                    >
+                        {/* <Typography variant="h6" className={classes.linkText}>
+                            Cart
+                        </Typography> */}
+                        {'      '}
                         <ShoppingBasket fontSize="large" />
                     </Link>
                 </Toolbar>

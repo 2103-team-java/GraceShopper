@@ -30,9 +30,6 @@ async function seed() {
             billingAdress: '123 Example Lane, Great Neck, NY',
         }),
     ]);
-    // const user = User.create({ username: 'cody', password: '123', shippingAddress: '123 Example Lane, Great Neck, NY', billingAdress: '123 Example Lane, Great Neck, NY'})
-
-    // console.log("magic methods", users[0].__proto__)
 
     const watch = await Promise.all([
         Item.create({

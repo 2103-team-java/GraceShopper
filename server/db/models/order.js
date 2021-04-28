@@ -12,6 +12,9 @@ const Order = db.define('order', {
         type: Sequelize.INTEGER,
         allownull: false,
         defaultValue: 1,
+        validate: {
+            min: 0,
+        }
     },
     active: {
         type: Sequelize.BOOLEAN,

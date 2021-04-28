@@ -5,15 +5,10 @@ const {
 module.exports = router;
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
-
 router.get('/', requireToken, async (req, res, next) => {
     try {
-        // console.log('req.body is ....', req.body)
-        // console.log('req.headers is ...', req.headers)
         const orders = await User.findAll({
-            attributes: [
-                'id', 'username', 'isAdmin'
-            ],
+            attributes: ['id', 'username', 'isAdmin'],
             include: [
                 {
                     model: Item,
@@ -27,24 +22,20 @@ router.get('/', requireToken, async (req, res, next) => {
     }
 });
 
-router.post("/", requireToken, async (req, res, next) => {
-  try {
+router.post('/', requireToken, async (req, res, next) => {
+    try {
+        const addOrder = await Order.create(req.body);
 
-    const addOrder = await Order.create(req.body)
-
-    res.send(addOrder);
-
-  } catch (err) {
-    next(err)
-  }
-})
+        res.send(addOrder);
+    } catch (err) {
+        next(err);
+    }
+});
 
 //for below, requiretoken to force only users
 router.put('/', requireToken, async (req, res, next) => {
     try {
-        // console.log('req.body is ....', req.body)
-        // console.log('req.headers is ...', req.headers)
-        const { userId, itemId, quantity } = req.body
+        const { userId, itemId, quantity } = req.body;
 
         const toUpdate = await Order.findOne({
             where: {
@@ -54,7 +45,6 @@ router.put('/', requireToken, async (req, res, next) => {
         });
 
         res.send(await toUpdate.update({ userId, itemId, quantity }));
-
     } catch (error) {
         next(error);
     }
@@ -73,10 +63,12 @@ router.put('/checkout/:orderId', requireToken, async (req, res, next) => {
 
 router.delete('/:orderToDestroyId', requireToken, async (req, res, next) => {
     try {
-      const orderToDestroy = await Order.findByPk(req.params.orderToDestroyId)
-      await orderToDestroy.destroy()
-      res.json(orderToDestroy)
+        const orderToDestroy = await Order.findByPk(
+            req.params.orderToDestroyId
+        );
+        await orderToDestroy.destroy();
+        res.json(orderToDestroy);
     } catch (error) {
-      next(error)
+        next(error);
     }
-  })
+});
