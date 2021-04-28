@@ -86,11 +86,11 @@ const App = ({ handleClick, isLoggedIn }) => {
                         color="inherit"
                         className={classes.linkText}
                     >
-                        <Typography variant="h6" className={classes.linkText}>
+                        {/* <Typography variant="h6" className={classes.linkText}>
                             Cart
-                        </Typography>
+                        </Typography> */}
                         {'      '}
-                        {/* <ShoppingBasket fontSize="large" /> */}
+                        <ShoppingBasket fontSize="large" />
                     </Link>
                 </Toolbar>
             </AppBar>
