@@ -8,6 +8,7 @@ import CheckoutPage from './components/checkout/CheckoutPage';
 import SingleItem from './components/SingleItem';
 import AllWatches from './components/watches';
 import CartHistory from './components/CartHistory';
+import { Thankyou } from './components/ThankYou';
 
 /**
  * COMPONENT
@@ -27,6 +28,7 @@ class Routes extends Component {
                 <Route path="/signup" component={Signup} />
                 <Route exact path="/cart" component={Cart} />
                 <Route path="/cart/checkout" component={CheckoutPage} />
+                <Route path="/thankyou" component={Thankyou} />
                 <Route path="/cart/history" component={CartHistory} />
             </div>
         );
