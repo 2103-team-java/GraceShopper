@@ -12,8 +12,11 @@ class CartHistory extends Component {
     }
 
     render() {
-        const items = this.props.cartHistory.items;
-        console.log('ITEMS', items);
+        const allItems = this.props.cartHistory.items;
+        let items;
+        if (allItems !== undefined) {
+            items = allItems.filter((item) => item.order.active === false);
+        }
         return (
             <div>
                 <h1> Cart History</h1>

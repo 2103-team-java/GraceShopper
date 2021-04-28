@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { List, Paper } from '@material-ui/core';
+import { Link, List, Paper } from '@material-ui/core';
 import { setAddressThunk, setInactive } from '../../store/checkout';
 import { connect } from 'react-redux';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -29,7 +29,7 @@ function Checkout(props) {
     console.log(props);
     const items = props.location.state.userData.items;
     const userId = props.location.state.userData.id;
-    console.log('userID is ....' , userId)
+    console.log('userID is ....', userId);
     console.log('ITEM', props.location.state.userData);
     const orderIds = items.map((item) => item.order.orderId);
     console.log('orderIds', orderIds);
@@ -120,7 +120,6 @@ function Checkout(props) {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
-                                    
                                     id="zip"
                                     name="zip"
                                     label="Zip / Postal code"
@@ -244,11 +243,16 @@ function Checkout(props) {
                 </React.Fragment>
             </form>
             <Grid item xs={12} align="center">
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => handleSubmit()}>{' '} pay for items
-                </Button>
+                <Link href="/thankyou">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => handleSubmit()}
+                    >
+                        {' '}
+                        pay for items
+                    </Button>
+                </Link>
             </Grid>
         </React.Fragment>
     );

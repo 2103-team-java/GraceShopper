@@ -1,359 +1,343 @@
 * {
-  font-family: "Montserrat";
-  background-color: white;
-  color: black;
+    font-family: 'Montserrat';
 }
-
 
 a.MuiTypography-root.MuiLink-root.MuiLink-underlineHover.makeStyles-linkText-1.MuiTypography-colorInherit {
-  display: inline-flex;
+    display: inline-flex;
 }
 
-section.javatime, svg#logo{
-  background:steelblue;
-  padding: 10px;
-  margin: 10px;
+section.javatime,
+svg#logo {
+    background: rgb(5, 109, 194);
+    padding: 10px;
+    margin: 10px;
 }
 
 /* TITLE LOGO */
 svg#logo {
-  position: relative;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 svg#logo path:nth-child(2) {
-  stroke-dasharray: 162.8671417236328;
-  stroke-dashoffset: 162.8671417236328;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 162.8671417236328;
+    stroke-dashoffset: 162.8671417236328;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(3) {
-  stroke-dasharray: 296.7498474121094;
-  stroke-dashoffset: 296.7498474121094;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 296.7498474121094;
+    stroke-dashoffset: 296.7498474121094;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(4) {
-  stroke-dasharray: 249.02613830566406;
-  stroke-dashoffset: 249.02613830566406;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 249.02613830566406;
+    stroke-dashoffset: 249.02613830566406;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(5) {
-  stroke-dasharray: 296.7497253417969;
-  stroke-dashoffset: 296.7497253417969;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 296.7497253417969;
+    stroke-dashoffset: 296.7497253417969;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(6) {
-  stroke-dasharray: 237.55209350585938;
-  stroke-dashoffset: 237.55209350585938;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 237.55209350585938;
+    stroke-dashoffset: 237.55209350585938;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(7) {
-  stroke-dasharray: 285.3449401855469;
-  stroke-dashoffset: 285.3449401855469;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 285.3449401855469;
+    stroke-dashoffset: 285.3449401855469;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(8) {
-  stroke-dasharray: 325.2586975097656;
-  stroke-dashoffset: 325.2586975097656;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 325.2586975097656;
+    stroke-dashoffset: 325.2586975097656;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(9) {
-  stroke-dasharray: 285.3475646972656;
-  stroke-dashoffset: 285.3475646972656;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 285.3475646972656;
+    stroke-dashoffset: 285.3475646972656;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(10) {
-  stroke-dasharray: 337.38092041015625;
-  stroke-dashoffset: 337.38092041015625;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 337.38092041015625;
+    stroke-dashoffset: 337.38092041015625;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(11) {
-  stroke-dasharray: 209.60031127929688;
-  stroke-dashoffset: 209.60031127929688;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 209.60031127929688;
+    stroke-dashoffset: 209.60031127929688;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(12) {
-  stroke-dasharray: 233.1754150390625;
-  stroke-dashoffset: 233.1754150390625;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 233.1754150390625;
+    stroke-dashoffset: 233.1754150390625;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(13) {
-  stroke-dasharray: 182.80072021484375;
-  stroke-dashoffset: 182.80072021484375;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 182.80072021484375;
+    stroke-dashoffset: 182.80072021484375;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(14) {
-  stroke-dasharray: 392.36224365234375;
-  stroke-dashoffset: 392.36224365234375;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 392.36224365234375;
+    stroke-dashoffset: 392.36224365234375;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(15) {
-  stroke-dasharray: 276.425537109375;
-  stroke-dashoffset: 276.425537109375;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 276.425537109375;
+    stroke-dashoffset: 276.425537109375;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(16) {
-  stroke-dasharray: 239.27781677246094;
-  stroke-dashoffset: 239.27781677246094;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 239.27781677246094;
+    stroke-dashoffset: 239.27781677246094;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(17) {
-  stroke-dasharray: 182.7988739013672;
-  stroke-dashoffset: 182.7988739013672;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 182.7988739013672;
+    stroke-dashoffset: 182.7988739013672;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(18) {
-  stroke-dasharray: 276.425537109375;
-  stroke-dashoffset: 276.425537109375;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 276.425537109375;
+    stroke-dashoffset: 276.425537109375;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(19) {
-  stroke-dasharray: 268.518310546875;
-  stroke-dashoffset: 268.518310546875;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 268.518310546875;
+    stroke-dashoffset: 268.518310546875;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(20) {
-  stroke-dasharray: 276.425537109375;
-  stroke-dashoffset: 276.425537109375;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 276.425537109375;
+    stroke-dashoffset: 276.425537109375;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 svg#logo path:nth-child(21) {
-  stroke-dasharray: 256.518310546875;
-  stroke-dashoffset: 256.518310546875;
-  animation: line-anim 3s ease forwards 0.5s;
+    stroke-dasharray: 256.518310546875;
+    stroke-dashoffset: 256.518310546875;
+    animation: line-anim 3s ease forwards 0.5s;
 }
 
 @keyframes line-anim {
-  to {
-    stroke-dashoffset: 0;
-  }
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
 /* SLIDER */
 
 img.watchPhoto {
-  min-height: 400px;
-  object-fit: cover;
+    min-height: 400px;
+    object-fit: cover;
 }
 
 section.slider,
 img {
-  min-width: 100%;
-  min-height: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
 
 div.MuiToolbar-root.MuiToolbar-regular.makeStyles-navlinks-3.MuiToolbar-gutters {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 section.slider,
 img {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: block;
-  height: 100%;
-  width: 100%;
-  line-height: 5;
-  object-fit: contain;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 5;
+    object-fit: contain;
 }
 
 .header {
-  padding-top: 0.5em;
+    padding-top: 0.5em;
 }
 
 img {
-  min-width: 300px;
-  min-height: 300px;
-  max-width: 300px;
-  max-height: 300px;
-  object-fit: cover;
-  background-color: transparent !important;
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover;
+    background-color: transparent !important;
 }
 
 img:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
-  background-color: transparent !important;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+    background-color: transparent !important;
 }
 
 .filter {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  margin: 1rem;
-  border-bottom: 0.1rem #c0c0c0 solid;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 1rem;
+    border-bottom: 0.1rem #c0c0c0 solid;
 }
 .filter div {
-  flex: 1;
+    flex: 1;
 }
 select {
-  padding: 5px;
-  margin: 5px;
+    padding: 5px;
+    margin: 5px;
 }
 
 /* SINGLE WATCH */
 .singleWatch {
-  border: 1px solid black;
-  border-radius: 30px;
+    border: 1px solid black;
+    border-radius: 30px;
 }
 div.watchInfo {
-  padding: 5px;
-  margin: 15px;
+    padding: 5px;
+    margin: 15px;
 }
 
 div.MuiPaper-root.makeStyles-paper-4.MuiPaper-elevation1.MuiPaper-rounded {
-  /* background-color: #421C52; */
-  color: black;
+    /* background-color: #421C52; */
+    color: black;
 }
 
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
-  border: 1px solid black;
-  color: black;
-  align-items: center;
+    border: 1px solid black;
+    color: black;
+    align-items: center;
 }
 
 span.MuiButton-label,
 span.MuiTouchRipple-root {
-  color: black;
+    color: black;
 }
-
-/* BUTTON */
-
-/* .btn-7 {
-  background: #17aa56;
-  color: #fff;
-  border-radius: 7px;
-  box-shadow: 0 5px #119e4d;
-  padding: 25px 60px 25px 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-} */
 
 /* Button 7a */
 .btn-1 {
-  width: 300px;
-  height: 100px;
-  border: none;
-  color: black;
-  border-radius: 4px;
-  transition: ease-out.3s;
-  font-size: 2rem;
-  outline: none;
-  border: 3px solid black;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    width: 300px;
+    height: 100px;
+    border: none;
+    color: black;
+    border-radius: 4px;
+    transition: ease-out.3s;
+    font-size: 2rem;
+    outline: none;
+    border: 3px solid black;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 button.btn-1 {
-  display: inline;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .btn-1:hover {
-  color: #fff;
-  cursor: pointer;
+    color: #fff;
+    cursor: pointer;
 }
 
 .btn-1:before {
-  transition: 0.5s all ease;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  right: 50%;
-  bottom: 0;
-  content: "";
-  background-color: steelblue;
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    content: '';
+    background-color: steelblue;
 }
 
 .btn-1:hover:before {
-  transition: 0.5s all ease;
-  left: 0;
-  right: 0;
-  opacity: 1;
-  z-index: -1;
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
 }
 
 /* LOGIN FORM */
 
 input {
- border: 1px solid black; 
+    border: 1px solid black;
 }
 
 loginBox {
-  background: black;
-  font-family: Montserrat;
+    background: black;
+    font-family: Montserrat;
 }
 
 section.login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 500px;
-  background: silver !important;
-  background-color: silver !important;
-  border-radius: 10px;
-  font-size: 30px;
-  display: flex;
-  text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: silver !important;
+    background-color: silver !important;
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    text-align: center;
 }
 
 form.loginForm {
-  width: 480px;
-  height: 480px;
-  margin-left: 10px;
-  margin-top: 10px;
+    width: 480px;
+    height: 480px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 h1.loginTitle {
-  text-align: center;
-  padding: 20px 0 20px 0;
-  border-bottom: 1px solid black;
+    text-align: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid black;
 }
 
 div {
-  padding: 10px;
+    padding: 10px;
 }
 
 /* Cart */
 
 .cartWatch {
-  border: 2px solid black;
-  border-radius: 10px ;
-  width: 400px;
-  padding: 10px;
-  margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 400px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .cartBox {
-  display: inline-block;
+    display: inline-block;
 }
 
 .checkoutHere {
-  margin-left: 100px;
+    margin-left: 100px;
 }
 
 img.model {
-  min-width: 1000px;
-  min-height: 1000px;
-  position: absolute;
-  right:100px;
-  top:200px;
+    min-width: 1000px;
+    min-height: 1000px;
+    position: absolute;
+    right: 100px;
+    top: 200px;
 }
 
 /* .checkoutpagecolor {
