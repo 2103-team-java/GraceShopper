@@ -9,11 +9,11 @@ a.MuiTypography-root.MuiLink-root.MuiLink-underlineHover.makeStyles-linkText-1.M
   display: inline-flex;
 }
 
-section.javatime, svg#logo{
-  background:steelblue;
+/* section.javatime, svg#logo{
+  background-color:steelblue;
   padding: 10px;
   margin: 10px;
-}
+} */
 
 /* TITLE LOGO */
 svg#logo {

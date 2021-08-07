@@ -7,8 +7,6 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
 router.get('/', requireToken, async (req, res, next) => {
     try {
-        // console.log('req.body is ....', req.body)
-        // console.log('req.headers is ...', req.headers)
         const orders = await User.findAll({
             attributes: ['id', 'username', 'isAdmin'],
             include: [
@@ -37,8 +35,6 @@ router.post('/', requireToken, async (req, res, next) => {
 //for below, requiretoken to force only users
 router.put('/', requireToken, async (req, res, next) => {
     try {
-        // console.log('req.body is ....', req.body)
-        // console.log('req.headers is ...', req.headers)
         const { userId, itemId, quantity } = req.body;
 
         const toUpdate = await Order.findOne({
